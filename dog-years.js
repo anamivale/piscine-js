@@ -12,44 +12,33 @@ function dogYears(planet, seconds) {
   const year = 31557600;
 
   const earth = seconds / year;
-  let years;
-  console.log(earth);
+  let years = 0;
 
-  switch (planet) {
-    case "mercury":
-      years = earth * planets["mercury"];
-      return years;
-
-    case "venus":
-      years = earth * planets["venus"];
-      return years;
-
-    case "mars":
-      years = earth * planets["mars"];
-      return years;
-
-    case "jupiter":
-      years = earth * planets["jupiter"];
-      return years;
-
-    case "saturn":
-      years = earth * planets["saturn"];
-      return years;
-
-    case "uranus":
-      years = earth * planets["uranus"];
-      return years;
-
-    case "neptune":
-      years = earth * planets["neptune"];
-      return years;
-
-    case "earth":
-      years = earth * planets["earth"];
-      return years;
-    default:
-      years = 0;
+  if (planet == "mercury") {
+    years += earth * planets["mercury"];
   }
-  return years;
+  if (planet == "venus") {
+    years += earth * planets["venus"];
+  }
+  if (planet == "mars") {
+    years += earth * planets["mars"];
+  }
+  if (planet == "jupiter") {
+    years += earth * planets["jupiter"];
+  }
+  if (planet == "saturn") {
+    years += earth * planets["saturn"];
+  }
+  if (planet == "uranus") {
+    years += earth * planets["uranus"];
+  }
+  if (planet == "neptune") {
+    years += earth * planets["neptune"];
+  }
+  if (planet == "earth") {
+    years += earth * planets["earth"];
+  }
+
+  return  Math.round(years * 7 * 100) / 100;
 }
-console.log(dogYears("eath", 1000000000));
+console.log(dogYears("earth", 1000000000));
