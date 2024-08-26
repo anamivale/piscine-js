@@ -1,8 +1,8 @@
 escapeStr = "`\\/ \"'";
 
-arr = [4, "2"];
+const arr = [4, "2"];
 
-obj = {
+const obj = {
   str: "valeria",
   num: 10,
   bool: true,
@@ -17,5 +17,9 @@ nested = {
     bool: true,
   },
 };
+Object.freeze(obj)
+Object.freeze(nested)
+Object.freeze(arr)
+
 
 console.log(nested.arr)
