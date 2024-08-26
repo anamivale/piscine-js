@@ -6,5 +6,5 @@ Object.freeze(clone2)
 Object.freeze(clone1)
 
 
-person.age = 78;
+person.age += 1;
 person.country = "FR";
