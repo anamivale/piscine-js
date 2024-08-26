@@ -1,7 +1,7 @@
-escapeStr = "`\\/ \"'";
+const escapeStr = "`\\/ \"'";
 
 const arr = [4, "2"];
-Object.freeze(arr)
+ Object.freeze(arr)
 
 const obj = {
   str: "valeria",
@@ -11,7 +11,7 @@ const obj = {
 };
 Object.freeze(obj)
 
-nested = {
+const nested = {
   arr: [4, undefined, "2"],
   obj: {
     str: "valeria",
