@@ -1,6 +1,7 @@
 escapeStr = "`\\/ \"'";
 
 const arr = [4, "2"];
+Object.freeze(arr)
 
 const obj = {
   str: "valeria",
@@ -8,6 +9,7 @@ const obj = {
   bool: true,
   undef: undefined,
 };
+Object.freeze(obj)
 
 nested = {
   arr: [4, undefined, "2"],
@@ -17,9 +19,6 @@ nested = {
     bool: true,
   },
 };
-Object.freeze(obj)
 Object.freeze(nested)
-Object.freeze(arr)
 
 
-console.log(nested.arr)
