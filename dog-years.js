@@ -9,36 +9,35 @@ function dogYears(planet, seconds) {
     neptune: 164.79132,
     earth: 1,
   };
-  const year = 31557600;
 
-  const earth = seconds / year;
+  const earth = seconds / 31557600;
   let years = 0;
 
   if (planet == "mercury") {
-    years += earth * planets["mercury"];
+    years = earth * planets["mercury"];
   }
   if (planet == "venus") {
-    years += earth * planets["venus"];
+    years = earth * planets["venus"];
   }
   if (planet == "mars") {
-    years += earth * planets["mars"];
+    years = earth * planets["mars"];
   }
   if (planet == "jupiter") {
-    years += earth * planets["jupiter"];
+    years = earth * planets["jupiter"];
   }
   if (planet == "saturn") {
-    years += earth * planets["saturn"];
+    years = earth * planets["saturn"];
   }
   if (planet == "uranus") {
-    years += earth * planets["uranus"];
+    years = earth * planets["uranus"];
   }
   if (planet == "neptune") {
     years += earth * planets["neptune"];
   }
   if (planet == "earth") {
-    years += earth * planets["earth"];
+    years = earth * planets["earth"];
   }
 
-  return  Math.round(years * 7 * 100) / 100;
+  return Math.round(years * 7 * 100) / 100;
 }
-console.log(dogYears("earth", 1000000000));
+console.log(dogYears("mars", 2134835688));
