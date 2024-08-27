@@ -4,8 +4,7 @@ is.num = (val) => {
   return typeof val === "number";
 };
 is.nan = (val) => {
-    
-  return Number.isNaN(val)
+  return Number.isNaN(val);
 };
 is.str = (val) => {
   return typeof val === "string";
@@ -26,7 +25,15 @@ is.arr = (val) => {
 };
 
 is.obj = (val) => {
-  return typeof val === "object";
+  return (
+    typeof val === "object" &&
+    val !== null &&
+    !Array.isArray(val) &&
+    !(val instanceof RegExp) &&
+    !(val instanceof Date) &&
+    !(val instanceof Set) &&
+    !(val instanceof Map)
+  );
 };
 is.fun = (val) => {
   return typeof val === "function";
