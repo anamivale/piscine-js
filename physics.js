@@ -1,9 +1,15 @@
 function getAcceleration(params) {
-  let a = params.f / params.m;
-  let a1 = params.Δv / params.Δt;
-  let a3 = (2 * params.d) / (params.t * params.t);
-
-  if (Number.isNaN(a) || Number.isNaN(a1) || Number.isNaN(a3)) {
-    return "impossible";
+  if (typeof params.f === "number" && typeof params.m === "number") {
+    return params.f / params.m;
   }
+
+  if (typeof params.Δv === "number" && typeof params.Δt === "number") {
+    return params.Δv / params.Δt;
+  }
+  if (typeof params.d === "number" && typeof params.t === "number") {
+    return (2 * params.d) / (params.t * params.t);
+  }
+
+  return "impossible";
 }
+console.log(getAcceleration({ f: 10, m: 5 }));
