@@ -1,5 +1,5 @@
 function isPositive(param) {
-  if (param >= 0) {
+  if (param > 0) {
     return true;
   }
   return false;
