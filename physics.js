@@ -12,4 +12,6 @@ function getAcceleration(params) {
 
   return "impossible";
 }
-console.log(getAcceleration({ f: 10, m: 5 }));
+// console.log(getAcceleration({ f: 10, m: 5 }));
+let x = null
+console.log(typeof x);
