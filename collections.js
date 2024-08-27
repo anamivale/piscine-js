@@ -53,7 +53,7 @@ function objToMap(params) {
 function arrToObj(params) {
   let obj = {};
 
-  for (i = 0; i < params.length; i++) {
+  for (let i = 0; i < params.length; i++) {
     obj[i] = params[i];
   }
   return obj;
@@ -61,7 +61,7 @@ function arrToObj(params) {
 function strToObj(params) {
   let obj = {};
 
-  for (i = 0; i < params.length; i++) {
+  for (let i = 0; i < params.length; i++) {
     obj[i] = params[i];
   }
   return obj;
