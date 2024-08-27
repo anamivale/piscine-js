@@ -4,7 +4,8 @@ is.num = (val) => {
   return typeof val === "number";
 };
 is.nan = (val) => {
-  return isNaN(val);
+    
+  return Number.isNaN(val)
 };
 is.str = (val) => {
   return typeof val === "string";
@@ -44,4 +45,3 @@ is.falsy = (val) => {
   return true;
 };
 
-console.log(is.falsy(1));
