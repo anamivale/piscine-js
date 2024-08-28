@@ -16,7 +16,7 @@ const indexOf = (arr, val, opt) => {
 
 const lastIndexOf = (arr, val, opt) => {
     
-  if ( opt = "" ) {
+  if ( typeof opt !== "undefined" ) {
     let i = opt
     for (i; i >= 0; i--) {
 
@@ -44,8 +44,3 @@ const includes = (arr, val) => {
 };
 console.log(lastIndexOf(["t", 0, 0, "t"], "t", 2));
 
-// if (typeof a !== "undefined") {
-//   console.log(a);
-// } else {
-//   console.log("!a");
-// }
