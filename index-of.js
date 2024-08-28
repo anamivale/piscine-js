@@ -1,5 +1,5 @@
 const indexOf = (arr, val, opt) => {
-  if (opt != "") {
+  if (typeof opt !== "undefined") {
     for (let i = opt; i < arr.length; i++) {
       if (arr[i] == val) {
         return i;
@@ -14,7 +14,18 @@ const indexOf = (arr, val, opt) => {
   return -1;
 };
 
-const lastIndexOf = (arr, val) => {
+const lastIndexOf = (arr, val, opt) => {
+    
+  if ( arguments.length = 3 ) {
+    let i = opt
+    for (i; i >= 0; i--) {
+
+      if (arr[i] == val) {
+
+        return i;
+      }
+    }
+  }
   for (let i = arr.length; i > 0; i--) {
     if (arr[i] == val) {
       return i;
@@ -31,4 +42,10 @@ const includes = (arr, val) => {
   }
   return false;
 };
-console.log(indexOf(["t", 0, 0, "t"], "t", 1));
+console.log(lastIndexOf(["t", 0, 0, "t"], "t", 2));
+
+// if (typeof a !== "undefined") {
+//   console.log(a);
+// } else {
+//   console.log("!a");
+// }
