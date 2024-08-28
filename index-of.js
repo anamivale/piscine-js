@@ -1,4 +1,11 @@
-const indexOf = (arr, val) => {
+const indexOf = (arr, val, opt) => {
+  if (opt != "") {
+    for (let i = opt; i < arr.length; i++) {
+      if (arr[i] == val) {
+        return i;
+      }
+    }
+  }
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] == val) {
       return i;
@@ -24,3 +31,4 @@ const includes = (arr, val) => {
   }
   return false;
 };
+console.log(indexOf(["t", 0, 0, "t"], "t", 1));
