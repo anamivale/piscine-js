@@ -1,6 +1,16 @@
 const slice = (a, b, c) => {
+  if (b < 0) {
+    b = a.length + b;
+  }
+
   if (Array.isArray(a)) {
     if (typeof c !== "undefined") {
+      if (c < 0) {
+        c = a.length + c;
+      }
+      if (b > c) {
+        return [];
+      }
       const output = [];
       for (let i = b; i < c; i++) {
         output.push(a[i]);
@@ -15,8 +25,18 @@ const slice = (a, b, c) => {
     return output;
   }
   if (typeof c !== "undefined") {
+    if (c < 0) {
+      c = a.length + c;
+    }
+    if (b > c) {
+      return "";
+    }
+
     let output = "";
     for (let i = b; i < c; i++) {
+      console.log("x");
+
+      console.log("x");
       output += a[i];
     }
     return output;
