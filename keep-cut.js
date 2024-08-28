@@ -7,7 +7,7 @@ function cutFirst(params) {
 
 function cutLast(params) {
   if (params.length <= 2) {
-    return params;
+    return "";
   }
   return params.slice(0, params.length - 2);
 }
