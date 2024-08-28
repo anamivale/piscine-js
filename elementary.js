@@ -33,28 +33,33 @@ const multiply = (a, b) => {
 };
 
 const divide = (a, b) => {
-    if (b > a){
-        return 0
-    }
+  if (a >= 0 && b > a) {
+    return 0;
+  }
   if (a < 0) {
     a = -a;
-    let x = 0;
-  while (a >= b) {
-    a -= b;
-    x++;
+    if (a < b) {
+      return 0;
+    }
 
-  }
-  return -x;
+    let x = 0;
+    while (a >= b) {
+      a -= b;
+      x++;
+    }
+    return -x;
   }
   if (b < 0) {
     b = -b;
+    if (a < b) {
+      return 0;
+    }
     let x = 0;
-  while (a >= b) {
-    a -= b;
-    x++;
-
-  }
-  return -x;
+    while (a >= b) {
+      a -= b;
+      x++;
+    }
+    return -x;
   }
   let x = 0;
   while (a >= b) {
@@ -64,9 +69,9 @@ const divide = (a, b) => {
   return x;
 };
 const modulo = (a, b) => {
-    if (b>a){
-        return a
-    }
+  if (b > a) {
+    return a;
+  }
   if (a < 0) {
     a = -a;
   }
@@ -80,4 +85,4 @@ const modulo = (a, b) => {
   }
   return x;
 };
-console.log(divide(123, -22));
+// console.log(divide(-12, 22));
