@@ -28,6 +28,3 @@ const slice = (a, b, c) => {
   }
   return output;
 };
-a = [1, 2, 3, 4, 5];
-
-console.log(slice("abcdef", 2));
