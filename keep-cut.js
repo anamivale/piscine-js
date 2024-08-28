@@ -1,6 +1,6 @@
 function cutFirst(params) {
   if (params.length <= 2) {
-    return params;
+    return "";
   }
   return params.slice(2);
 }
@@ -40,4 +40,4 @@ function keepFirstLast(params) {
   return params.slice(0, 2) + params.slice(params.length - 2);
 
 }
-// console.log(keepFirstLast("valeria"));
+console.log(cutFirst("a"));
