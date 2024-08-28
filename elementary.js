@@ -33,6 +33,9 @@ const multiply = (a, b) => {
 };
 
 const divide = (a, b) => {
+    if (b > a){
+        return 0
+    }
   if (a < 0) {
     a = -a;
     let x = 0;
@@ -59,6 +62,9 @@ const divide = (a, b) => {
   return x;
 };
 const modulo = (a, b) => {
+    if (b>a){
+        return a
+    }
   if (a < 0) {
     a = -a;
   }
@@ -72,4 +78,4 @@ const modulo = (a, b) => {
   }
   return x;
 };
-console.log(divide(-12, 6));
+console.log(modulo(34, 78));
