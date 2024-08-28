@@ -39,18 +39,20 @@ const divide = (a, b) => {
   if (a < 0) {
     a = -a;
     let x = 0;
-  while (a > 0) {
+  while (a >= b) {
     a -= b;
     x++;
+
   }
   return -x;
   }
   if (b < 0) {
     b = -b;
     let x = 0;
-  while (a > 0) {
+  while (a >= b) {
     a -= b;
     x++;
+
   }
   return -x;
   }
@@ -78,4 +80,4 @@ const modulo = (a, b) => {
   }
   return x;
 };
-console.log(divide(78, 34));
+console.log(divide(123, -22));
