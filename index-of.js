@@ -16,7 +16,7 @@ const indexOf = (arr, val, opt) => {
 
 const lastIndexOf = (arr, val, opt) => {
     
-  if ( arguments.length = 3 ) {
+  if ( opt = "" ) {
     let i = opt
     for (i; i >= 0; i--) {
 
