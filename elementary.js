@@ -71,7 +71,11 @@ const divide = (a, b) => {
   }
   return x;
 };
+
 const modulo = (a, b) => {
+  if (b == 0) {
+    return 0;
+  }
   if (b > a) {
     return a;
   }
@@ -88,4 +92,4 @@ const modulo = (a, b) => {
   }
   return x;
 };
-console.log(divide(12, -22));
+console.log(modulo(0, 0));
