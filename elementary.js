@@ -1,30 +1,16 @@
 const multiply = (a, b) => {
+  if (a === 0 || b === 0) {
+    return 0;
+  }
   if (a < 0 && b < 0) {
     a = -a;
     b = -b;
-    let output = 0;
-    for (let i = 1; i <= b; i++) {
-      output += a;
-    }
-    return output;
+  } else if (a < 0 || b < 0) {
+    let temp = Math.abs(a);
+    a = Math.abs(b);
+    b = temp;
+    return -multiply(a, b);
   }
-  if (a < 0) {
-    a = -a;
-    let output = 0;
-    for (let i = 1; i <= b; i++) {
-      output += a;
-    }
-    return -output;
-  }
-  if (b < 0) {
-    b = -b;
-    let output = 0;
-    for (let i = 1; i <= b; i++) {
-      output += a;
-    }
-    return -output;
-  }
-
   let output = 0;
   for (let i = 1; i <= b; i++) {
     output += a;
@@ -33,63 +19,31 @@ const multiply = (a, b) => {
 };
 
 const divide = (a, b) => {
-  if (b == 0) {
-    return 0;
+  if (b === 0) {
+    throw new Error("Division by zero is not allowed");
   }
-  if (a >= 0 && b > a) {
-    return 0;
-  }
-  if (a < 0) {
-    a = -a;
-    if (a < b) {
-      return 0;
-    }
+  let negative = a < 0 !== b < 0;
+  a = Math.abs(a);
+  b = Math.abs(b);
 
-    let x = 0;
-    while (a >= b) {
-      a -= b;
-      x++;
-    }
-    return -x;
-  }
-  if (b < 0) {
-    b = -b;
-    if (a < b) {
-      return 0;
-    }
-    let x = 0;
-    while (a >= b) {
-      a -= b;
-      x++;
-    }
-    return -x;
-  }
-  let x = 0;
+  let quotient = 0;
   while (a >= b) {
     a -= b;
-    x++;
+    quotient++;
   }
-  return x;
+  return negative ? -quotient : quotient;
 };
 
 const modulo = (a, b) => {
-  if (b == 0) {
-    return 0;
+  if (b === 0) {
+    throw new Error("Division by zero is not allowed");
   }
-  if (b > a) {
-    return a;
-  }
-  if (a < 0) {
-    a = -a;
-  }
-  if (b < 0) {
-    b = -b;
-  }
-  let x = 0;
-  while (a > b - 1) {
+  let negative = a < 0;
+  a = Math.abs(a);
+  b = Math.abs(b);
+
+  while (a >= b) {
     a -= b;
-    x = a;
   }
-  return x;
+  return negative ? -a : a;
 };
-console.log(modulo(0, 0));
