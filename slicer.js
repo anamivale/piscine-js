@@ -14,5 +14,4 @@ const slice = (a, b, c) => {
 
   return output;
 };
-a = [1, 2, 3, 4, 5];
 
