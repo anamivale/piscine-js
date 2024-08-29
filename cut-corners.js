@@ -33,7 +33,7 @@ function floor(params) {
     sign = true;
     params = -params;
   }
-  while (b + 1 < params) {
+  while (b + 1 <= params) {
     b++;
   }
   if (sign) {
@@ -59,4 +59,5 @@ function ceil(params) {
 
   return b;
 }
+
 
