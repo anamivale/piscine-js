@@ -9,13 +9,13 @@ function round(params) {
     b++;
   }
   if (sign) {
-    x = params - b;
+    let x = params - b;
     if (x >= 0.5) {
       b++;
     }
     return -b;
   }
-  x = params - b;
+ let x = params - b;
   if (x >= 0.5) {
     b++;
   }
