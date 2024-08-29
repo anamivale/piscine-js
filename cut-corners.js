@@ -1,6 +1,15 @@
 const modulo = (a, b) => {
-  return negative ? -a : a;
+  if (b === 0) {
+    throw new Error("Division by zero is not allowed");
+  }
+  let negative = a < 0;
+  a = Math.abs(a);
+  b = Math.abs(b);
 
+  while (a >= b) {
+    a -= b;
+  }
+  return negative ? -a : a;
 };
 
 function round(params) {
@@ -66,8 +75,8 @@ function trunc(params) {
   return sign ? -num : num;
 }
 
-// const nums = [4, -3, 3, -2, 0];
-// console.log(nums.map(round));
-// console.log(nums.map(floor));
-// console.log(nums.map(trunc));
-// console.log(nums.map(ceil));
+const nums = [4, -3, 3, -2, 0];
+console.log(nums.map(round));
+console.log(nums.map(floor));
+console.log(nums.map(trunc));
+console.log(nums.map(ceil));
