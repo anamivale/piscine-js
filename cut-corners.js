@@ -1,6 +1,11 @@
 function round(params) {
-  if (typeof params != 'number' || isNaN(params) || params === Infinity || params === -Infinity) {
-    throw new Error('Invalid input: params must be a finite number.');
+  if (
+    typeof params != "number" ||
+    isNaN(params) ||
+    params > Infinity ||
+    params < -Infinity
+  ) {
+    throw new Error("Invalid input: params must be a finite number.");
   }
 
   let b = 0;
@@ -23,8 +28,13 @@ function round(params) {
 }
 
 function floor(params) {
-  if (typeof params != 'number' || isNaN(params) || params === Infinity || params === -Infinity) {
-    throw new Error('Invalid input: params must be a finite number.');
+  if (
+    typeof params != "number" ||
+    isNaN(params) ||
+    params > Infinity ||
+    params < -Infinity
+  ) {
+    throw new Error("Invalid input: params must be a finite number.");
   }
 
   let b = 0;
@@ -43,8 +53,13 @@ function floor(params) {
 }
 
 function ceil(params) {
-  if (typeof params != 'number' || isNaN(params) || params === Infinity || params === -Infinity) {
-    throw new Error('Invalid input: params must be a finite number.');
+  if (
+    typeof params != "number" ||
+    isNaN(params) ||
+    params > Infinity ||
+    params < -Infinity
+  ) {
+    throw new Error("Invalid input: params must be a finite number.");
   }
 
   let b = 0;
@@ -63,8 +78,13 @@ function ceil(params) {
 }
 
 function trunc(params) {
-  if (typeof params != 'number' || isNaN(params) || params === Infinity || params === -Infinity) {
-    throw new Error('Invalid input: params must be a finite number.');
+  if (
+    typeof params != "number" ||
+    isNaN(params) ||
+    params > Infinity ||
+    params < -Infinity
+  ) {
+    throw new Error("Invalid input: params must be a finite number.");
   }
 
   let b = 0;
@@ -81,4 +101,3 @@ function trunc(params) {
 
   return sign ? -b : b;
 }
-
