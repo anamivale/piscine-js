@@ -82,10 +82,4 @@ function trunc(params) {
   return sign ? -b : b;
 }
 
-// Test cases
-const nums = [3.7, -3.7, 3.1, -3.1];
-console.log(nums.map(round));  // Output should be [4, -4, 3, -3]
-console.log(nums.map(floor));  // Output should be [3, -4, 3, -4]
-console.log(nums.map(trunc));  // Output should be [3, -3, 3, -3]
-console.log(nums.map(ceil));   // Output should be [4, -3, 4, -3]
-
+/
