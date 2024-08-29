@@ -79,10 +79,6 @@ function trunc(params) {
 
   return sign ? -num : num;
 }
-const nums = [3.7, -3.7, 3.1, -3.1]
-console.log(nums.map(round))
-console.log(nums.map(floor))
-console.log(trunc(19345678.789))
-console.log(nums.map(ceil))
+
 
 
