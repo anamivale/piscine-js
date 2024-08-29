@@ -1,7 +1,3 @@
-function trunc(params) {
-  return parseInt(params);
-}
-
 function round(params) {
   let b = 0;
   let sign = false;
@@ -60,4 +56,20 @@ function ceil(params) {
   return b;
 }
 
+function trunc(params) {
+  let b = 0;
+  let sign = false;
+  if (params < 0) {
+    sign = true;
+    params = -params;
+  }
+  while (b + 1 <= params) {
+    b++;
+  }
+  if (sign) {
+    return -b ;
+  }
+
+  return b;
+}
 
