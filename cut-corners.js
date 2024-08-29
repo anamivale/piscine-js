@@ -34,7 +34,7 @@ function floor(params) {
     params > Infinity ||
     params < -Infinity
   ) {
-    throw new Error("Invalid input: params must be a finite number.");
+    return 0;
   }
 
   let b = 0;
@@ -59,7 +59,7 @@ function ceil(params) {
     params > Infinity ||
     params < -Infinity
   ) {
-    throw new Error("Invalid input: params must be a finite number.");
+    return 0;
   }
 
   let b = 0;
@@ -84,7 +84,7 @@ function trunc(params) {
     params > Infinity ||
     params < -Infinity
   ) {
-    throw new Error("Invalid input: params must be a finite number.");
+    return 0;
   }
 
   let b = 0;
