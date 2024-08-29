@@ -5,21 +5,14 @@ function round(params) {
     sign = true;
     params = -params;
   }
-  while (b + 1 < params) {
+  while (b + 1 <= params) {
     b++;
   }
-  if (sign) {
-    let x = params - b;
-    if (x >= 0.5) {
-      b++;
-    }
-    return -b;
-  }
- let x = params - b;
-  if (x >= 0.5) {
+  if (params - b >= 0.5) {
     b++;
   }
-  return b;
+
+  return sign ? -b : b;
 }
 
 function floor(params) {
@@ -32,11 +25,7 @@ function floor(params) {
   while (b + 1 <= params) {
     b++;
   }
-  if (sign) {
-    return -b - 1;
-  }
-
-  return b;
+  return sign ? -b - 1 : b;
 }
 
 function ceil(params) {
@@ -49,11 +38,7 @@ function ceil(params) {
   while (b < params) {
     b++;
   }
-  if (sign) {
-    return -b + 1;
-  }
-
-  return b;
+  return sign ? -b + 1 : b;
 }
 
 function trunc(params) {
@@ -66,10 +51,10 @@ function trunc(params) {
   while (b + 1 <= params) {
     b++;
   }
-  if (sign) {
-    return -b ;
-  }
+  return sign ? -b : b;}
 
-  return b;
-}
-
+const nums = [3.7, -3.7, 3.1, -3.1];
+console.log(nums.map(round));
+console.log(nums.map(floor));
+console.log(nums.map(trunc));
+console.log(nums.map(ceil));
