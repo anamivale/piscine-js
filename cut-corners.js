@@ -1,12 +1,6 @@
 const modulo = (a, b) => {
-  let negative = a < 0;
-  a = Math.abs(a);
-  b = Math.abs(b);
+  return negative ? -a : a;
 
-  while (a >= b) {
-    a -= b;
-  }
-  return a;
 };
 
 function round(params) {
