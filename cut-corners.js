@@ -1,103 +1,71 @@
-function round(params) {
-  if (
-    typeof params != "number" ||
-    isNaN(params) ||
-    params > Infinity ||
-    params < -Infinity
-  ) {
-    throw new Error("Invalid input: params must be a finite number.");
-  }
+const modulo = (a, b) => {
+  let negative = a < 0;
+  a = Math.abs(a);
+  b = Math.abs(b);
 
-  let b = 0;
+  while (a >= b) {
+    a -= b;
+  }
+  return a;
+};
+
+function round(params) {
   let sign = false;
 
   if (params < 0) {
-    sign = true;
     params = -params;
+    sign = true;
+  }
+  let rem = modulo(params, 1);
+
+  let num = params - rem;
+
+  if (rem < 0) {
+    rem = -rem;
   }
 
-  while (b + 1 <= params) {
-    b++;
+  if (rem > 0.4) {
+    num++;
   }
-
-  if (params - b >= 0.5) {
-    b++;
-  }
-
-  return sign ? -b : b;
+  return sign ? -num : num;
 }
 
 function floor(params) {
-  if (
-    typeof params != "number" ||
-    isNaN(params) ||
-    params > Infinity ||
-    params < -Infinity
-  ) {
-    return 0;
-  }
-
-  let b = 0;
   let sign = false;
 
   if (params < 0) {
-    sign = true;
     params = -params;
+    sign = true;
   }
+  let rem = modulo(params, 1);
 
-  while (b + 1 <= params) {
-    b++;
-  }
-
-  return sign ? -b - 1 : b;
+  let num = params - rem;
+  return sign? -num-1 : num
 }
 
 function ceil(params) {
-  if (
-    typeof params != "number" ||
-    isNaN(params) ||
-    params > Infinity ||
-    params < -Infinity
-  ) {
-    return 0;
-  }
-
-  let b = 0;
   let sign = false;
 
   if (params < 0) {
-    sign = true;
     params = -params;
+    sign = true;
   }
+  let rem = modulo(params, 1);
 
-  while (b < params) {
-    b++;
-  }
-
-  return sign ? -b + 1 : b;
+  let num = params - rem;
+  return sign? -num : num+1
 }
 
 function trunc(params) {
-  if (
-    typeof params != "number" ||
-    isNaN(params) ||
-    params > Infinity ||
-    params < -Infinity
-  ) {
-    return 0;
-  }
-
-  let b = 0;
   let sign = false;
 
   if (params < 0) {
-    sign = true;
     params = -params;
+    sign = true;
   }
+  let rem = modulo(params, 1);
 
-  while (b + 1 <= params) {
-    b++;
-  }
-
-  return sign ? -b : b;
+  let num = params - rem;
+  return sign? -num : num
 }
+
