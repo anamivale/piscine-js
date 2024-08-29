@@ -1,6 +1,6 @@
 const modulo = (a, b) => {
   if (b === 0) {
-    throw new Error("Division by zero is not allowed");
+    return 0;
   }
   let negative = a < 0;
   a = Math.abs(a);
