@@ -69,13 +69,15 @@ function trunc(params) {
     params = -params;
     sign = true;
   }
+  let x = 0
 
   if (params > 12345678) {
     params -= 12345678
+    x =12345678
   }
   let rem = modulo(params, 1);
   
-  let num = (params - rem) + 12345678;
+  let num = (params - rem) + x ;
 
   return sign ? -num : num;
 }
