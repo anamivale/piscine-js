@@ -75,8 +75,4 @@ function trunc(params) {
   return sign ? -num : num;
 }
 
-const nums = [4, -3, 3, -2, 0];
-console.log(nums.map(round));
-console.log(nums.map(floor));
-console.log(nums.map(trunc));
-console.log(nums.map(ceil));
+
