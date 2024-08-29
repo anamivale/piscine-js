@@ -1,6 +1,6 @@
 
 
-function split(params) {
+function split(params, sep) {
     let output = []
 
     for ( let i=0; i<params.length; i++){
@@ -17,4 +17,5 @@ function join(params) {
     }
     return output
 }
-
+x = [1,2,3,4,5]
+console.log(x.join(x," "));
