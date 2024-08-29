@@ -82,4 +82,3 @@ function trunc(params) {
   return sign ? -b : b;
 }
 
-/
