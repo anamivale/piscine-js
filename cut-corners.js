@@ -71,9 +71,9 @@ function trunc(params) {
   }
   let x = 0
 
-  if (params > 12345678) {
-    params -= 12345678
-    x =12345678
+  if (params > 0xfffffffff) {
+    params -= 0xfffffffff
+    x =0xfffffffff
   }
   let rem = modulo(params, 1);
   
