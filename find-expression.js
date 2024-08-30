@@ -40,4 +40,3 @@ function findExpression(target) {
     return result ? "1" + result : undefined;
 }
 
-// Example usage:
