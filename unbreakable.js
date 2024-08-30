@@ -8,25 +8,22 @@ function split(params, sep) {
         output.push(word);
         word = "";
         i += len;
-        continue
+        continue;
       }
 
       word += params[i];
       if (i === params.length - 1) {
-        
         output.push(word);
       }
-      i++
+      i++;
     }
-    if (word == ""){
-    output.push(word)
+    if (word == "") {
+      output.push(word);
     }
-    return output ;
+    return output;
   }
+  output.push(params);
 
-  for (let i = 0; i < params.length; i++) {
-    output.push(params[i]);
-  }
   return output;
 }
 
@@ -41,4 +38,3 @@ function join(params, sep) {
   }
   return output;
 }
-
