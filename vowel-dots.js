@@ -1,14 +1,13 @@
 function vowelDots(params) {
-    vowels = /[aeiouAEIOU]/
-    output = ""
+  let vowels = /[aeiouAEIOU]/;
+  let output = "";
 
-    for (let i=0;i < params.length; i++){
-        if (vowels.test(params[i])){
-            output += (params[i] + ".")
-            continue
-        }
-        output += params[i]
+  for (let i = 0; i < params.length; i++) {
+    if (vowels.test(params[i])) {
+      output += params[i] + ".";
+      continue;
     }
-    return output
-    
+    output += params[i];
+  }
+  return output;
 }
