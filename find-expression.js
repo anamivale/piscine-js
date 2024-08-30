@@ -1,37 +1,43 @@
+
+
 function findExpression(target) {
-  if (target < 1) {
-    return undefined;
-  }
-
-  // BFS initialization
-  const queue = [{ value: 1, operations: "" }];
-  const visited = new Set();
-  visited.add(1);
-
-  while (queue.length > 0) {
-    const { value, operations } = queue.shift();
-
-    // Check if we've reached the target
-    if (value === target) {
-      return "1"+ operations.trim(); // Return the operations string without leading/trailing spaces
+    if (target < 1) {
+        return undefined;
     }
-
-    // Apply the operations
-    const nextValueAdd = value + 4;
-    const nextValueMul = value * 2;
-
-    if (nextValueAdd <= target && !visited.has(nextValueAdd)) {
-      visited.add(nextValueAdd);
-      queue.push({ value: nextValueAdd, operations: operations + " " + add4 });
+    
+    // Helper function for recursion
+    function recurse(current, operations) {
+        // If current number matches the target, return the operations
+        if (current === target) {
+            return operations;
+        }
+        
+        // If the current number exceeds the target, stop recursion
+        if (current > target) {
+            return undefined;
+        }
+        
+        // Try adding 4
+        let result = recurse(current + 4, operations + " " + add4);
+        if (result !== undefined) {
+            return result;
+        }
+        
+        // Try multiplying by 2
+        result = recurse(current * 2, operations + " " + mul2);
+        if (result !== undefined) {
+            return result;
+        }
+        
+        // If neither operation results in the target, return undefined
+        return undefined;
     }
-
-    if (nextValueMul <= target && !visited.has(nextValueMul)) {
-      visited.add(nextValueMul);
-      queue.push({ value: nextValueMul, operations: operations + " " + mul2 });
-    }
-  }
-
-  // If we exhaust the queue without finding the target
-  return undefined;
+    
+    // Start the recursion from 1 with an empty operations string
+    const result = recurse(1, "");
+    
+    // Return the result if found, else return undefined
+    return result ? "1" + result : undefined;
 }
 
+// Example usage:
