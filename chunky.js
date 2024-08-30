@@ -3,11 +3,18 @@ function chunk(params, limit) {
     let temp = []
 
     for (let i =0; i<params.length; i++){
-        if(i+1 % limit === 0 || i == params.length-1){
+        console.log(i, (i)%limit);
+        if(((i)% limit) == 0 && i !=0 ) {
             output.push(temp)
+            temp = []
         }
         temp.push(params[i])
+        if (i == params.length-1 ){
+            output.push(temp)
+
+        }
     }
+
+    return output
 }
 
-console.log(chunk([1,2,3,4,5,6], 2));
