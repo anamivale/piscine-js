@@ -1,7 +1,7 @@
 function sameAmount(params, args1, args2) {
   let x = params.match(args1);
   let y = params.match(args2);
-  if (x === null || y===nul){
+  if (x === null || y===null){
     return false
   }
   if (x.length === y.length) {
