@@ -15,3 +15,4 @@ function pyramid(str, depth) {
 
     return output
 }
+console.log(pyramid("{}", 12));
