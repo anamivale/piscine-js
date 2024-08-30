@@ -1,43 +1,35 @@
 function split(params, sep) {
-    let output = []
-    let len = sep.length
-    if (typeof sep !== "undefined"){
-        let word  = ""
-        for ( let i=0; i<params.length; i++){
-
-            if (params.slice(i, i+len) == sep){
-                if (word != ""){
-                    output.push(word)
-                    word = ""
-                    i+=len
-
-                }
-               
-                    
-                }
-                word += params[i]
-                if (i == params.length-1){
-                        output.push(word)
-                }
-            }
-            return output
-
-        }
-    
-
-    for ( let i=0; i<params.length; i++){
-        output.push(params[i])
+  let output = [];
+  let len = sep.length;
+  if (typeof sep !== "undefined") {
+    let word = "";
+    for (let i = 0; i < params.length; i++) {
+      if (params.slice(i, i + len) == sep) {
+        output.push(word);
+        word = "";
+        i += len;
+      }
+      word += params[i];
+      if (i == params.length - 1) {
+        output.push(word);
+      }
     }
-    return output
+    return output;
+  }
+
+  for (let i = 0; i < params.length; i++) {
+    output.push(params[i]);
+  }
+  return output;
 }
 
 function join(params) {
-    let output = ""
+  let output = "";
 
-    for ( let i=0; i<params.length; i++){
-        output += params[i]
-    }
-    return output
+  for (let i = 0; i < params.length; i++) {
+    output += params[i];
+  }
+  return output;
 }
 
-console.log(split('ee,ff,g,', ','));
+console.log(split("ee,ff,g,", ","));
