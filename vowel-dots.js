@@ -1,11 +1,11 @@
 function vowelDots(params) {
   let output = "";
-
+  let vowels = new RegExp("[aeiouAEIOU]");
   for (let i = 0; i < params.length; i++) {
-    let vowels = new RegExp("[aeiouAEIOU]");
+    
     if (vowels.test(params[i])) {
       output += params[i] + ".";
-      continue;
+    //   continue;
     }
     output += params[i];
   }
