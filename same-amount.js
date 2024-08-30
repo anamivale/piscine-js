@@ -12,7 +12,7 @@ function sameAmount(params, args1, args2) {
   return false;
 }
 
-data2 =
+let data2 =
   "qqqqqqq q qqqqqqqfsqqqqq q qq  qw w wq wqw  wqw ijnjjnfapsdbjnkfsdiqw klfsdjn fs fsdnjnkfsdjnk sfdjn fsp fd";
 
 console.log(sameAmount(data2, /q /, /qqqqqqq/));
