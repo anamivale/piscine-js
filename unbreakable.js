@@ -12,10 +12,8 @@ function split(params, sep) {
       }
 
       word += params[i];
-      if (i == params.length - 1) {
-        if (word == ""){
-          break
-        }
+      if (i === params.length - 1) {
+        
         output.push(word);
       }
       i++
