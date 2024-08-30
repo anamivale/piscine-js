@@ -6,8 +6,10 @@ function vowelDots(params) {
     if (vowels.test(params[i])) {
       output += params[i] + ".";
     //   continue;
+    }else{
+        output += params[i];
     }
-    output += params[i];
+    
   }
   return output;
 }
