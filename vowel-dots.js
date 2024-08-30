@@ -2,8 +2,7 @@ function vowelDots(params) {
   let output = "";
 
   for (let i = 0; i < params.length; i++) {
-    let vowels = /[aeiouAEIOU]/;
-
+    let vowels = new RegExp("[aeiouAEIOU]");
     if (vowels.test(params[i])) {
       output += params[i] + ".";
       continue;
@@ -12,3 +11,4 @@ function vowelDots(params) {
   }
   return output;
 }
+console.log(vowelDots("valero"));
