@@ -5,7 +5,6 @@ function split(params, sep) {
     let word = "";
     for (let i = 0; i < params.length; ) {
       if (params.slice(i, i + len) == sep) {
-        console.log("Here")
         output.push(word);
         word = "";
         i += len;
@@ -21,7 +20,10 @@ function split(params, sep) {
       }
       i++
     }
-    return output;
+    if (word == ""){
+    output.push(word)
+    }
+    return output ;
   }
 
   for (let i = 0; i < params.length; i++) {
@@ -42,4 +44,3 @@ function join(params, sep) {
   return output;
 }
 
-console.log(split('a.b.c', '.'));
