@@ -4,6 +4,10 @@ function RNA(params) {
   if (!isUpperCase(params)) {
     return "Invalid";
   }
+if (params.includes(" ")){
+    return "Invalid"
+}
+
   let rna = "";
 
   for (let i = 0; i < params.length; i++) {
