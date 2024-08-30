@@ -17,9 +17,7 @@ function split(params, sep) {
                 }
                 word += params[i]
                 if (i == params.length-1){
-                    if (word != ""){
                         output.push(word)
-                    }
                 }
             }
             return output
@@ -42,4 +40,4 @@ function join(params) {
     return output
 }
 
-
+console.log(split('ee,ff,g,', ','));
