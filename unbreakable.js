@@ -1,40 +1,45 @@
-function split(params, sep) {
-  let output = [];
-  let len = sep.length;
-  if (typeof sep !== "undefined") {
-    let word = "";
-    for (let i = 0; i < params.length; ) {
-      if (params.slice(i, i + len) == sep) {
-        output.push(word);
-        word = "";
-        i += len;
-        continue;
-      }
-
-      word += params[i];
-      if (i === params.length - 1) {
-        output.push(word);
-      }
-      i++;
-    }
-    if (word == "") {
-      output.push(word);
-    }
-    return output;
+function split(a, b) {
+  if (typeof b === "undefined") {
+    return [a];
   }
-  output.push(params);
+  if (b === "") {
+    let newS = [];
+    for (let i = 0; i < a.length; i++) {
+      newS.push(a[i]);
+    }
+    return newS;
+  }
 
-  return output;
+  let newS = [];
+  let temp = "";
+  let len = b.length; // Length of the delimiter
+  for (let i = 0; i < a.length; i++) {
+    // Check if the substring from the current index matches the delimiter
+    if (a.slice(i, i + len) === b) {
+      newS.push(temp);
+      temp = "";
+      i += len - 1; // Skip over the delimiter
+    } else {
+      temp += a[i];
+    }
+  }
+  // Push the last segment or an empty string if the string ends with the delimiter
+  newS.push(temp);
+  return newS;
 }
 
-function join(params, sep) {
-  let output = "";
+function join(a, b) {
+  if (typeof b === "undefined") {
+    b = ",";
+  }
+  let nString = "";
 
-  for (let i = 0; i < params.length; i++) {
-    output += params[i];
-    if (i != params.length1 && typeof sep !== "undefined") {
-      output += sep;
+  for (let i = 0; i < a.length; i++) {
+    if (i === 0) {
+      nString += a[i];
+    } else {
+      nString += b + a[i];
     }
   }
-  return output;
+  return nString;
 }
