@@ -1,6 +1,6 @@
 function nasa(params) {
    
-  output = "";
+  let output = "";
 
   for (let i = 1; i <= params; i++) {
     if (i % 3 == 0 && i % 5 == 0) {
