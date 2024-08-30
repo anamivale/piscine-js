@@ -3,19 +3,23 @@ function split(params, sep) {
   let len = sep.length;
   if (typeof sep !== "undefined") {
     let word = "";
-    for (let i = 0; i < params.length; i++) {
+    for (let i = 0; i < params.length; ) {
       if (params.slice(i, i + len) == sep) {
+        console.log("Here")
         output.push(word);
         word = "";
         i += len;
+        continue
       }
+
       word += params[i];
-      // if (i == params.length - 1) {
-      //   if (word == ""){
-      //     break
-      //   }
-      //   output.push(word);
-      // }
+      if (i == params.length - 1) {
+        if (word == ""){
+          break
+        }
+        output.push(word);
+      }
+      i++
     }
     return output;
   }
@@ -38,4 +42,4 @@ function join(params, sep) {
   return output;
 }
 
-console.log(split('a b c', ' '));
+console.log(split('a.b.c', '.'));
