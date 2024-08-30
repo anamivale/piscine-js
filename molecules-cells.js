@@ -23,7 +23,7 @@ function RNA(params) {
   return rna;
 }
 
-function RNA(params) {
+function DNA(params) {
   let dna = "";
 
   for (let i = 0; i < params.length; i++) {
