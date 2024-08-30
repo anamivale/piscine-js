@@ -13,4 +13,4 @@ function get(obj, path) {
 const src = { nested: { key: "peekaboo" } };
 const path = "nested.key";
 
-console.log(get(src, path)); 
+console.log(get({ a: [{ b: t }] }, 'a.0.b.toString')); 
