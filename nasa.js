@@ -1,6 +1,6 @@
 function nasa(params) {
    
-  let output = "\"";
+  let output = "";
 
   for (let i = 1; i <= params; i++) {
     if (i % 3 == 0 && i % 5 == 0) {
@@ -33,7 +33,7 @@ function nasa(params) {
       }
 
   }
-  return output + "\""
+  return output 
 }
 
 console.log(nasa(15));
