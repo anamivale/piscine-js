@@ -38,4 +38,4 @@ function join(params, sep) {
   return output;
 }
 
-console.log(split('ee,ff,g,', ','));
+console.log(split('a b c', ' '));
