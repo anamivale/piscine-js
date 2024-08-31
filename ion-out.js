@@ -2,6 +2,9 @@ function ionOut(params) {
   const regex = /\b\w*tion*\w\b/g;
 
   let output = params.match(regex);
+  if (output === null){
+    return []
+  }
   let arr = output;
   let outarr = [];
 
