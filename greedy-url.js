@@ -1,19 +1,33 @@
 // getURL: returns all URLs present in the dataSet
 function getURL(params) {
-    let regex = /(https:\/\/|http:\/\/)([\w.\/\S]+)/g
-    let x = params.match(regex)
-    let y = []
-    y = x
-    return y
+  let regex = /(https:\/\/|http:\/\/)([\w.\/\S]+)/g;
+  let x = params.match(regex);
+  let y = [];
+  y = x;
+  return y;
 }
 // greedyQuery: returns URLs from the dataSet, with at least 3 query parameters.
-function greedyQuery(params) {
-    let regex = /(https:\/\/|http:\/\/)([\w.\/\S={3,}]+)/g
-    let x = params.match(regex)
-    let y = []
-    y = x
-    return y
+function greedyQuery(dataSet) {
+  const greedyQueryRegex = /https?:\/\/\S+\?\S*\w(?:[&?]\S*\w){2,}/g;
+
+  // Find all matches and return them as an array
+  return (dataSet.match(greedyQueryRegex) || []).filter((url) => {
+    // Count the number of query parameters
+    const queryParams = url.split(/[&?]/).length - 1;
+    return queryParams >= 3;
+  });
 }
 // notSoGreedy: returns URLs from the dataSet, with at least 2, but not more then 3 query parameters.
-function notSoGreedy(params) {}
-console.log(greedyQuery("qqq http:// qqqq q qqqqq https://something.com/hello qqqqqqq qhttp://example.com/hello?you=something&something=you http://www.example.com/catalog.asp?itemid=232&template=fresh&crcat=ppc&crsource=google&crkw=buy-a-lot http://example.com/path?name=Branch&products=[Journeys,Email,Universal%20Ads]interact" ));
+function notSoGreedy(dataSet) {
+  const notSoGreedyRegex = /https?:\/\/\S+\?\S*\w(?:[&?]\S*\w){1,2}/g;
+  return (dataSet.match(notSoGreedyRegex) || []).filter((url) => {
+    // Count the number of query parameters
+    const queryParams = url.split(/[&?]/).length - 1;
+    return queryParams >= 2 && queryParams <= 3;
+  });
+}
+console.log(
+    notSoGreedy(
+    "qqq http:// qqqq q qqqqq https://something.com/hello qqqqqqq qhttp://example.com/hello?you=something&something=you http://www.example.com/catalog.asp?itemid=232&template=fresh&crcat=ppc&crsource=google&crkw=buy-a-lot http://example.com/path?name=Branch&products=[Journeys,Email,Universal%20Ads]interact"
+  )
+);
