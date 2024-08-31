@@ -22,12 +22,8 @@ function notSoGreedy(dataSet) {
   const notSoGreedyRegex = /https?:\/\/\S+\?\S*\w(?:[&?]\S*\w){1,2}/g;
   return (dataSet.match(notSoGreedyRegex) || []).filter((url) => {
     // Count the number of query parameters
-    const queryParams = url.split(/[&?]/).length - 1;
+    const queryParams = url.split(/&?/).length - 1;
     return queryParams >= 2 && queryParams <= 3;
   });
 }
-console.log(
-    notSoGreedy(
-    "qqq http:// qqqq q qqqqq https://something.com/hello qqqqqqq qhttp://example.com/hello?you=something&something=you http://www.example.com/catalog.asp?itemid=232&template=fresh&crcat=ppc&crsource=google&crkw=buy-a-lot http://example.com/path?name=Branch&products=[Journeys,Email,Universal%20Ads]interact"
-  )
-);
+console.log(notSoGreedy('https://192.168.1.123?something=nothing&pro=[23]');
