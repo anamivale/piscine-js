@@ -1,14 +1,10 @@
 function groupPrice(params) {
-  let regex = /([A-Za-z0-9.\S]*)/g;
-  let s = params.match(regex);
-  let x = /[\d]*/g;
-  let y = params.match(x);
-  let z = s.concat(y);
-  let output = [];
-  z.forEach((element) => {
-    if (element != "") {
-      output.push(element);
-    }
-  });
-  return output;
+        const priceRegex = /([A-Z]{3}|\$|£|€)(\d+)\.(\d{2})/g;
+        const result = [];
+        let match;
+        while ((match = priceRegex.exec(params)) !== null) {
+            result.push([match[0], match[2], match[3]]);
+        }
+        return result;
+    
 }
