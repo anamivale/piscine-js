@@ -8,8 +8,7 @@ function getURL(params) {
 }
 // greedyQuery: returns URLs from the dataSet, with at least 3 query parameters.
 function greedyQuery(dataSet) {
-  const greedyQueryRegex = /https?:\/\/\S+\?\S*\w(?:[&?]\S*\w){2,}/g;
-
+  const greedyQueryRegex =/https?:\/\/[^\s?]+(\?\S+)?/g;
   // Find all matches and return them as an array
   return (dataSet.match(greedyQueryRegex) || []).filter((url) => {
     // Count the number of query parameters
@@ -19,12 +18,11 @@ function greedyQuery(dataSet) {
 }
 // notSoGreedy: returns URLs from the dataSet, with at least 2, but not more then 3 query parameters.
 function notSoGreedy(dataSet) {
-  // Modify regex to include a wider range of characters in query parameters
   const notSoGreedyRegex = /https?:\/\/[^\s?]+(\?\S+)?/g;
 
   return (dataSet.match(notSoGreedyRegex) || []).filter((url) => {
     // Count the number of query parameters
-    const queryParams = url.split(/[&?]/).length - 1; // Subtract 1 to ignore the initial split
+    const queryParams = url.split(/[&?]/).length - 1; 
     return queryParams >= 2 && queryParams < 4;
   });
 }
