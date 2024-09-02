@@ -1,7 +1,7 @@
 function isValid(date) {
   if (date instanceof Date) {
     if (Date.toDateString() !== "Invalid Date") {
-      return false;
+      return true;
     }
   }
   return false;
