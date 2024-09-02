@@ -1,4 +1,12 @@
 function isValid(date) {
+  if (date instanceof Date) {
+    console.log("g");
+    if (date.toDateString() !== "Invalid Date") {
+      return true;
+    } else{
+      return false
+    }
+  }
   let d1 = /[a-zA-Z0-9:+()]/
   if (d1.test(date)){
     return true
@@ -36,5 +44,5 @@ function isPast(date1) {
 }
 console.log(typeof Date(), Date("2006-10-12"));
 
-console.log(isValid(Date.now()));
+console.log(isValid(new Date("")));
 console.log(typeof Date(), new Date(""));
