@@ -21,10 +21,13 @@ function isValid(date) {
   return date instanceof Date && !isNaN(date.getTime());
 }
 function isAfter(date1, date2) {
+  if (!isValid(date1) && !isValid(date1)) return false;
   return date1 > date2;
 }
 
 function isBefore(date1, date2) {
+  if (!isValid(date1) && !isValid(date1)) return false;
+
   return date2 > date1;
 }
 
