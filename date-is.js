@@ -1,8 +1,10 @@
-function isValid(Date) {
-  if (Date.toDateString() == "Invalid Date") {
-    return false;
+function isValid(date) {
+  if (date instanceof Date) {
+    if (Date.toDateString() !== "Invalid Date") {
+      return false;
+    }
   }
-  return true;
+  return false;
 }
 function isAfter(date1, date2) {
   return date1 > date2;
@@ -28,3 +30,4 @@ function isPast(date1) {
   return false;
 }
 
+console.log(isValid("valid"));
