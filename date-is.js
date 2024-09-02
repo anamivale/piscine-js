@@ -1,5 +1,5 @@
-function isValid(params) {
-  if (params.toDateString() == "Invalid Date") {
+function isValid(Date) {
+  if (Date.toDateString() == "Invalid Date") {
     return false;
   }
   return true;
@@ -28,4 +28,5 @@ function isPast(date1) {
   return false;
 }
 
-console.log(isBefore(new Date("2006-01-01"), new Date("2026-01-01")));
+console.log();
+!invalid(isValid);
