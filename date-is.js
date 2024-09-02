@@ -1,5 +1,10 @@
 function isValid(date) {
+  let d1 = /[a-zA-Z0-9:+()]/
+  if (d1.test(date)){
+    return true
+  }
   if (date instanceof Date) {
+    console.log("g");
     if (date.toDateString() !== "Invalid Date") {
       return true;
     }
@@ -30,4 +35,3 @@ function isPast(date1) {
   return false;
 }
 
-console.log(isValid("valid"));
