@@ -28,5 +28,3 @@ function isPast(date1) {
   return false;
 }
 
-console.log();
-!invalid(isValid);
