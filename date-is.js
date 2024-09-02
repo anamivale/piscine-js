@@ -34,4 +34,7 @@ function isPast(date1) {
   }
   return false;
 }
+console.log(typeof Date(), Date("2006-10-12"));
 
+console.log(isValid(Date.now()));
+console.log(typeof Date(), new Date(""));
