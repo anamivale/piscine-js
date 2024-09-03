@@ -1,7 +1,7 @@
 function firstDayWeek(week, year) {
   console.log(week, year);
   let date = new Date(year);
-  let x = ((week-1) * 7)  ;
+  let x = (week - 1) * 7;
   console.log(x);
   date.setDate(date.getDate() + x);
   console.log(date);
@@ -33,18 +33,15 @@ function firstDayWeek(week, year) {
       z = z - 6;
       break;
   }
-  date.setDate(z+1);
+  date.setDate(z + 1);
   if (year > date.getFullYear()) {
     return "01-01-" + String(year);
   }
+  let dateO = String(date.getDate()).padStart(2, "0");
+  let monthO = String(date.getMonth() + 1).padStart(2, "0");
+  let yearO = String(date.getFullYear()).padStart(4, "0");
 
-  return (
-    String(date.getDate()) +
-    "-" +
-    String(date.getMonth() + 1) +
-    "-" +
-    String(date.getFullYear())
-  );
+  return dateO +"-"+ monthO +"-"+ yearO;
 }
-console.log(firstDayWeek(52, '1000'));//- '22-12-1000'
+console.log(firstDayWeek(52, "011")); //- '22-12-1000'
 console.log(new Date("1000-12-30").getDay());
