@@ -7,4 +7,4 @@ function dayOfTheYear(params) {
   console.log(x);
   return parseInt((current - first) / 86400000);
 }
-console.log(dayOfTheYear(new Date("2020-05-30 18:09:00")));
+console.log(dayOfTheYear(new Date("0001-01-01")));
