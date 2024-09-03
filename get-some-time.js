@@ -1,10 +1,10 @@
 function firstDayWeek(week, year) {
   console.log(week, year);
   let date = new Date(year);
-
-  date.setDate(date.getDate() + week * 1);
+  let x = week * 1 - 1;
+  date.setDate(date.getDate() + x);
   let y = date.getDay();
-  // console.log(y);
+  console.log(y);
   let z = date.getDate();
 
   switch (y) {
@@ -30,7 +30,7 @@ function firstDayWeek(week, year) {
       z = z - 6;
       break;
   }
-
+date.setDate(z)
   return (
     String(date.getDate()) +
     "-" +
@@ -40,3 +40,4 @@ function firstDayWeek(week, year) {
   );
 }
 console.log(firstDayWeek(1, "2000"));
+console.log((new Date("2000-01-01")).getDay());
