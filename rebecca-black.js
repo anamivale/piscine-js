@@ -33,3 +33,4 @@ function isLastDayOfMonth(params) {
   }
   return params.getDate() === 31;
 }
+console.log(isLastDayOfMonth(new Date("2020-12-30")));
