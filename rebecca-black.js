@@ -23,5 +23,13 @@ function isLastDayOfMonth(params) {
     return false;
   }
 
-  return params.getDate() === 30 || params.getDate() === 31;
+  if (
+    params.getMonth() === 3 ||
+    params.getMonth() === 5 ||
+    params.getMonth() === 8 ||
+    params.getMonth() === 10
+  ) {
+    return params.getDate() === 30;
+  }
+  return params.getDate() === 31;
 }
