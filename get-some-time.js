@@ -43,5 +43,5 @@ function firstDayWeek(week, year) {
 
   return dateO +"-"+ monthO +"-"+ yearO;
 }
-console.log(firstDayWeek(52, "011")); //- '22-12-1000'
+console.log(firstDayWeek(2, '2017')); //- '22-12-1000'
 console.log(new Date("1000-12-30").getDay());
