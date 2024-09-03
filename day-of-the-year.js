@@ -2,9 +2,14 @@
 
 function dayOfTheYear(params) {
   let current = params.getTime();
-  let x = new Date(String(params.getFullYear()));
-  let first = x.getTime();
-  console.log(x);
-  return parseInt((current - first) / 86400000);
+  let x = params.getFullYear();
+    let start = new Date()
+    if (x === 1){
+        start = new Date("0001-01-01")
+    }
+    else {
+        start = new Date(x, 0, 1)
+    }
+
+  return parseInt((current - start) / 86400000) +1;
 }
-console.log(dayOfTheYear(new Date("0001-01-01")));
