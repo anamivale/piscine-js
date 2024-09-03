@@ -30,7 +30,11 @@ function firstDayWeek(week, year) {
       z = z - 6;
       break;
   }
-date.setDate(z)
+  date.setDate(z);
+  if (year > date.getFullYear()) {
+    return "01-01-" + String(year);
+  }
+
   return (
     String(date.getDate()) +
     "-" +
@@ -39,5 +43,5 @@ date.setDate(z)
     String(date.getFullYear())
   );
 }
-console.log(firstDayWeek(1, "2000"));
-console.log((new Date("2000-01-01")).getDay());
+console.log(firstDayWeek(1, "1000"));
+console.log(new Date("2000-01-01").getDay());
