@@ -1,13 +1,6 @@
 function countLeapYears(date) {
-  let count = 0;
 
-  for (let i = 1; i <= date.getFullYear(); i++) {
-    if (i % 4 === 0) {
-      count++;
-    }
-  }
-
-  return count;
+    let x = date.getFullYear()
+    return parseInt((x/400)*97)
 }
-console.log(countLeapYears(new Date('1664-08-09')));
-console.log(1664/100);
+;
