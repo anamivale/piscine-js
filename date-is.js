@@ -1,5 +1,8 @@
 function isValid(date) {
- return !isNaN(date.valueOf())
+  if (typeof date === "string") {
+    return false;
+  }
+  return !isNaN(date.valueOf());
 }
 function isAfter(date1, date2) {
   if (!isValid(date1) && !isValid(date1)) return false;
@@ -29,3 +32,4 @@ function isPast(date1) {
 }
 
 console.log(isValid(Date.now()));
+
