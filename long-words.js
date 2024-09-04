@@ -3,13 +3,11 @@ function longWords(params) {
 }
 
 function oneLongWord(params) {
-
-    return params.some((long) => long.length >= 10);
-
+  return params.some((long) => long.length >= 10);
 }
 
 function noLongWords(params) {
-  return !(params.every((long) => long.length >= 7));
-
+  console.log(params);
+  return !params.every((long) => long.length >= 7);
 }
-
+console.log(noLongWords(["val"]));
