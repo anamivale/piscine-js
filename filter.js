@@ -14,7 +14,7 @@ function reject(arr, fn) {
   return output;
 }
 
-function reject(arr, fn) {
+function partition(arr, fn) {
   let output = [];
   let neg = [];
   for (let i = 0; i < arr.length; i++) {
