@@ -12,11 +12,11 @@ function add3(params) {
   };
 }
 
-function add3(params) {
+function sub4(params) {
   return function second(sec) {
     return function third(th) {
       return function fourth(four) {
-        return params - sec - th - fourth;
+        return params - sec - th - four;
       };
     };
   };
