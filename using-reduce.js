@@ -1,40 +1,17 @@
-function adder(params, initial) {
-  if (typeof initial === "undefined") {
-    if (params.length === 0 || typeof params === "undefined") {
-      return 0;
-    }
-    let output = params.reduce((acc, curr) => acc + curr);
-    return output;
-  }
-  if (params.length === 0 || typeof params === "undefined") {
-    return initial;
-  }
+function adder(params, initial = 0) {
   let output = params.reduce((acc, curr) => acc + curr, initial);
   return output;
 }
 
-function sumOrMul(params, initial) {
-    console.log(params);
-  if (typeof initial === "undefined") {
-    if (params.length === 0 || typeof params === "undefined") {
-      return 0;
-    }
-    let output = params.reduce((acc, curr, idx) =>
-      curr % 2 === 0 ? acc * curr : acc + curr
-    );
-    return output;
-  }
-  if (params.length === 0 || typeof params === "undefined") {
-    return initial;
-  }
+function sumOrMul(params, initial = 0) {
   let output = params.reduce(
     (acc, curr, idx) => (curr % 2 === 0 ? acc * curr : acc + curr),
     initial
   );
   return output;
 }
-function funcExec(params) {
-  let x = params.reduce((el) => el);
+function funcExec(params, initial) {
+  let x = params.reduce((acc, fn) => fn(acc), initial);
   return x;
 }
 console.log(adder([]));
