@@ -64,7 +64,7 @@ function tempForecasts(params) {
   let out = [];
 
   nums.map((el) => {
-    let z = (el - 32) * (5 / 9);
+    let z = (el - 32) * 5 / 9;
     out.push(Math.round(z) + "°Celsius");
   });
   let z = [];
@@ -75,6 +75,6 @@ function tempForecasts(params) {
   return `${z[0].temperature} in ${z[0].city}, ${z[0].state}`;
 }
 
-// console.log(
-//   fahrenheitToCelsius(["86°F", "100°F", "41°F", "55°F", "10°F", "70°F", "-2°F"])
-// );
+console.log(
+  fahrenheitToCelsius(["86°F", "100°F", "41°F", "55°F", "10°F", "70°F", "-2°F"])
+);
