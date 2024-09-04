@@ -33,9 +33,8 @@ function fahrenheitToCelsius(params) {
   let output = [];
 
   nums.map((el) => {
-    let z = (el - 32)*0.5556;
-    console.log(el);
-    console.log(z);
+    let z = (el - 32) * 0.5556;
+
     output.push(Math.floor(z) + "°C");
   });
   return output;
@@ -64,7 +63,7 @@ function tempForecasts(params) {
   let out = [];
 
   nums.map((el) => {
-    let z = (el - 32)*0.5556;
+    let z = (el - 32) * 0.5556;
     out.push(Math.floor(z) + "°Celsius");
   });
   let z = [];
@@ -72,9 +71,17 @@ function tempForecasts(params) {
     el.temperature = out[idx];
     z.push(el);
   });
-  return `${z[0].temperature} in ${z[0].city}, ${z[0].state}`;
+  let arr = z.map((el) => `${el.temperature} in ${el.city}, ${el.state}`);
+  return arr;
 }
 
 console.log(
-  fahrenheitToCelsius(["86°F", "100°F", "41°F", "55°F", "10°F", "70°F", "-2°F"])
+  tempForecasts([
+    {
+      city: "Pasadena",
+      temperature: " 101 °F",
+      state: "california",
+      region: "West",
+    },
+  ])
 );
