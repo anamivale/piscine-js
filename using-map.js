@@ -74,12 +74,5 @@ function tempForecasts(params) {
 }
 
 console.log(
-  tempForecasts([
-    {
-      city: "Pasadena",
-      temperature: " 101 °F",
-      state: "california",
-      region: "West",
-    },
-  ])
+  fahrenheitToCelsius(["30°C", "37°C", "5°C", "12°C", "-13°C", "21°C", "-19°C"])
 );
