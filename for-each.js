@@ -1,16 +1,9 @@
 function forEach(arr, fn) {
-    console.log(arr);
-    console.log(fn);
-    let output = []
+    let output = [];
   for (let index = 0; index < arr.length; index++) {
-    output.push(fn(arr[index]))
+    fn(arr[index], i, arr);
   }
-  return output
+  return output;
 }
 
-function add(params) {
-  let vall = 0;
-  return vall + params;
-}
 
-console.log(forEach([1, 2, 3, 4], add));
