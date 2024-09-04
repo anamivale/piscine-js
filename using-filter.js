@@ -50,7 +50,7 @@ function multiFilter(params) {
   let output = params.filter(
     (el) =>
       el.capital.length >= 8 &&
-      vowel.includes(el.name[0]) &&
+      !vowel.includes(el.name[0]) &&
       vowels.test(el.tag) &&
       el.region !== "South"
   );
