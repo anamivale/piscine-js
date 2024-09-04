@@ -64,7 +64,7 @@ function capitalizeState(params) {
 
 function tempForecasts(params) {
   let output = params.map((x) => x.temperature);
-  let reg = /\d+/g;
+  let reg = /-?\d+/g;
   let x = [];
   output.map((el) => {
     x.push(el.match(reg));
@@ -73,11 +73,11 @@ function tempForecasts(params) {
   let out = [];
 
   nums.map((el) => {
-    let z = (el - 32) * (5/9);
+    let z = (el - 32) * (5 / 9);
     out.push(Math.floor(z) + "°Celsius");
   });
   let c = capitalizeState(params);
-  let z= [];
+  let z = [];
   params.map((el, idx) => {
     el.temperature = out[idx];
     el.state = c[idx];
