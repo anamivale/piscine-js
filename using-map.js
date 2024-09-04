@@ -51,6 +51,16 @@ function trimTemp(params) {
   });
   return z;
 }
+function capitalizeState(params) {
+  let output = params.map((x) => x.state);
+  let z = upperCasingStates(output);
+  return z;
+  //   params.map((el, idx) => {
+  //     el.temperature = output[idx];
+  //     z.push(el);
+  //   });
+  //   return z;
+}
 
 function tempForecasts(params) {
   let output = params.map((x) => x.temperature);
@@ -66,11 +76,14 @@ function tempForecasts(params) {
     let z = (el - 32) * 0.5556;
     out.push(Math.floor(z) + "°Celsius");
   });
-  let z = [];
+  let c = capitalizeState(params);
+  let z= [];
   params.map((el, idx) => {
     el.temperature = out[idx];
+    el.state = c[idx];
     z.push(el);
   });
+
   let arr = z.map((el) => `${el.temperature} in ${el.city}, ${el.state}`);
   return arr;
 }
@@ -80,7 +93,13 @@ console.log(
     {
       city: "Pasadena",
       temperature: " 101 °F",
-      state: "california",
+      state: "new york",
+      region: "West",
+    },
+    {
+      city: "Pasadena",
+      temperature: " 101 °F",
+      state: "new york",
       region: "West",
     },
   ])
