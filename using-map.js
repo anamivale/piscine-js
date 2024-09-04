@@ -33,10 +33,10 @@ function fahrenheitToCelsius(params) {
   let output = [];
 
   nums.map((el) => {
-    let z = (el - 32) * (5 / 9);
+    let z = (el - 32)*0.5556;
     console.log(el);
     console.log(z);
-    output.push(Math.round(z) + "°C");
+    output.push(Math.floor(z) + "°C");
   });
   return output;
 }
@@ -64,8 +64,8 @@ function tempForecasts(params) {
   let out = [];
 
   nums.map((el) => {
-    let z = (el - 32) * 5 / 9;
-    out.push(Math.round(z) + "°Celsius");
+    let z = (el - 32)*0.5556;
+    out.push(Math.floor(z) + "°Celsius");
   });
   let z = [];
   params.map((el, idx) => {
