@@ -73,7 +73,7 @@ function tempForecasts(params) {
   let out = [];
 
   nums.map((el) => {
-    let z = (el - 32) * 0.5556;
+    let z = (el - 32) * (5/9);
     out.push(Math.floor(z) + "°Celsius");
   });
   let c = capitalizeState(params);
