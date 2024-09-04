@@ -8,6 +8,6 @@ function oneLongWord(params) {
 
 function noLongWords(params) {
   console.log(params);
-  return !params.every((long) => long.length >= 7);
+  return !params.some((long) => long.length >= 7);
 }
-console.log(noLongWords(["val"]));
+console.log(noLongWords(["fill", "carbon", "chart", "glare", "express"]));
