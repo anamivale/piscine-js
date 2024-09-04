@@ -25,13 +25,13 @@ function filter5Vowels(params) {
   return output;
 }
 function filter1DistinctVowel(params) {
-  let vowels = "aeiouAEIOU";
+  let vowels = "aeiou";
   let output = [];
   params.filter((el) => {
     let count = {};
     for (let i = 0; i < el.length; i++) {
-      if (vowels.includes(el[i])) {
-        count[el[i]] = el[i]
+      if (vowels.includes(el[i].toLowerCase())) {
+        count[el[i].toLowerCase()] = el[i]
       }
     }
     let arr =Object.keys(count)
