@@ -1,7 +1,7 @@
 function map(arr, fn) {
   let output = [];
   for (let index = 0; index < arr.length; index++) {
-    output.push(fn(arr[index]), i, arr);
+    output.push(fn(arr[index]), index, arr);
   }
   return output;
 }
@@ -9,11 +9,11 @@ function map(arr, fn) {
 function flatMap(arr, fn) {
   let output = [];
   for (let index = 0; index < arr.length; index++) {
-    
-    if (Array.isArray(arr[i])) {
-      output.push(...arr[i]);
+    let values = fn(arr[index], index, arr);
+    if (Array.isArray(values[i])) {
+      output.push(...values[i]);
     } else {
-      output.push(fn(arr[i]));
+      output.push(fn(values[i]));
     }
   }
   return output;
