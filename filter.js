@@ -1,7 +1,8 @@
 function filter(arr, fn) {
   let output = [];
   for (let i = 0; i < arr.length; i++) {
-    output.push(fn(arr[i], i, arr));
+    let x = fn(arr[i], i, arr);
+    output.push(x);
   }
   return output;
 }
@@ -9,7 +10,8 @@ function filter(arr, fn) {
 function reject(arr, fn) {
   let output = [];
   for (let i = 0; i < arr.length; i++) {
-    output.push(!fn(arr[i], i, arr));
+    let x = !fn(arr[i], i, arr);
+    output.push(x);
   }
   return output;
 }
