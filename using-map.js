@@ -23,8 +23,63 @@ function upperCasingStates(params) {
   });
   return x;
 }
-function fahrenheitToCelsius(params) {}
+function fahrenheitToCelsius(params) {
+  let reg = /\d+/g;
+  let x = [];
+  params.map((el) => {
+    x.push(el.match(reg));
+  });
+  let nums = x.join(" ").split(" ");
+  let output = [];
 
-// console.log(fahrenheitToCelsius(["68°F", "59°F", "25°F"]));
-let reg = /d+/g;
-console.log(["68°F", "59°F", "25°F"].match(reg));
+  nums.map((el) => {
+    let z = (el - 32) * (5 / 9);
+    output.push(Math.round(z) + "°C");
+  });
+  return output;
+}
+
+function trimTemp(params) {
+  let output = params.map(
+    (x) => (x.temperature = x.temperature.replace(/ /g, ""))
+  );
+  let z = [];
+  params.map((el, idx) => {
+    el.temperature = output[idx];
+    z.push(el);
+  });
+  return z;
+}
+
+function tempForecasts(params) {
+  let output = params.map((x) => x.temperature);
+  let reg = /\d+/g;
+  let x = [];
+  output.map((el) => {
+    x.push(el.match(reg));
+  });
+  let nums = x.join(" ").split(" ");
+  let out = [];
+
+  nums.map((el) => {
+    let z = (el - 32) * (5 / 9);
+    out.push(Math.round(z) + "°Celsius");
+  });
+  let z = [];
+  params.map((el, idx) => {
+    el.temperature = out[idx];
+    z.push(el);
+  });
+  return `${z[0].temperature} in ${z[0].city}, ${z[0].state}`;
+}
+
+console.log(
+  tempForecasts([
+    {
+      city: "Pasadena",
+      temperature: " 101 °F",
+      state: "california",
+      region: "West",
+    },
+  ])
+);
