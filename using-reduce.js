@@ -14,6 +14,7 @@ function adder(params, initial) {
 }
 
 function sumOrMul(params, initial) {
+    console.log(params);
   if (typeof initial === "undefined") {
     if (params.length === 0 || typeof params === "undefined") {
       return 0;
