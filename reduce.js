@@ -23,7 +23,7 @@ function reduce(arr, fn) {
   return acc;
 }
 
-function reduce(arr, fn) {
+function reduceRight(arr, fn) {
   let acc = arr[arr.length - 1];
   for (let i = arr.length - 2; i >= 0; i--) {
     let x = fn(acc, arr[i]);
@@ -31,3 +31,4 @@ function reduce(arr, fn) {
   }
   return acc;
 }
+
