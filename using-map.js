@@ -24,8 +24,7 @@ function upperCasingStates(params) {
   return x;
 }
 function fahrenheitToCelsius(params) {
-  console.log(params);
-  let reg = /\d+/g;
+  let reg = /-?\d+/g;
   let x = [];
   params.map((el) => {
     x.push(el.match(reg));
@@ -35,6 +34,8 @@ function fahrenheitToCelsius(params) {
 
   nums.map((el) => {
     let z = (el - 32) * (5 / 9);
+    console.log(el);
+    console.log(z);
     output.push(Math.round(z) + "°C");
   });
   return output;
@@ -75,5 +76,5 @@ function tempForecasts(params) {
 }
 
 // console.log(
-//   fahrenheitToCelsius(["30°C", "37°C", "5°C", "12°C", "-13°C", "21°C", "-19°C"])
+//   fahrenheitToCelsius(["86°F", "100°F", "41°F", "55°F", "10°F", "70°F", "-2°F"])
 // );
