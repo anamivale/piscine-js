@@ -3,16 +3,16 @@ function map(arr, fn) {
   for (let i = 0; i < arr.length; i++) result.push(fn(arr[i], i, arr));
   return result;
 }
-
 function flatMap(arr, fn) {
-  let output = [];
-  for (let index = 0; index < arr.length; index++) {
-    let values = fn(arr[index], index, arr);
-    if (Array.isArray(values)) {
-      output.push(...values);
+  const result = [];
+  for (let i = 0; i < arr.length; i++) {
+    const mappedValue = fn(arr[i], i, arr);
+
+    if (Array.isArray(mappedValue)) {
+      result.push(...mappedValue);
     } else {
-      output.push(fn(values));
+      result.push(mappedValue);
     }
   }
-  return output;
+  return result;
 }
