@@ -24,6 +24,7 @@ function upperCasingStates(params) {
   return x;
 }
 function fahrenheitToCelsius(params) {
+  console.log(params);
   let reg = /\d+/g;
   let x = [];
   params.map((el) => {
@@ -73,6 +74,6 @@ function tempForecasts(params) {
   return `${z[0].temperature} in ${z[0].city}, ${z[0].state}`;
 }
 
-console.log(
-  fahrenheitToCelsius(["30°C", "37°C", "5°C", "12°C", "-13°C", "21°C", "-19°C"])
-);
+// console.log(
+//   fahrenheitToCelsius(["30°C", "37°C", "5°C", "12°C", "-13°C", "21°C", "-19°C"])
+// );
