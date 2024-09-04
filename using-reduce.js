@@ -5,7 +5,7 @@ function adder(params, initial = 0) {
 
 function sumOrMul(params, initial = 0) {
   let output = params.reduce(
-    (acc, curr, idx) => (curr % 2 === 0 ? acc * curr : acc + curr),
+    (acc, curr) => (curr % 2 === 0 ? acc * curr : acc + curr),
     initial
   );
   return output;
