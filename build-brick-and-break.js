@@ -1,13 +1,13 @@
 export function build(arg) {
-  let i = 1;
+  let i = 0;
 
   const intervalId = setInterval(() => {
-    if (i > arg) {
+    if (i > arg - 1) {
       clearInterval(intervalId);
     } else {
       const brick = document.createElement("div");
       brick.id = "brick-" + i;
-      if (i % 3 === 0) {
+      if ((i + 1) % 3 === 0) {
         brick.setAttribute("foundation", "true");
       }
 
