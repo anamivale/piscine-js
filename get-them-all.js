@@ -11,14 +11,35 @@ export function getBonannoPisano() {
 }
 
 export function getActive() {
-    const active = document.querySelectorAll(":active");
-    const notActive = document.querySelectorAll(":not(:active)");
-    return [active, notActive];
-//  
+  const active = [];
+  const notActive = [];
+  const architects = document.querySelectorAll("a");
+  architects.forEach((element) => {
+    if (
+      element.classList.contains("classical") &&
+      element.classList.contains("active")
+    ) {
+      active.push(element);
+    } else {
+      notActive.push(element);
+    }
+  });
+  console.log(active);
+  return [active, notActive];
+  //
 }
 
 export function getClassical() {
-  const classical = document.querySelectorAll("classical");
-  const notClassical = document.querySelectorAll(":not(classical)");
+  const architects = document.querySelectorAll("a");
+  const classical = [];
+  const notClassical = [];
+  architects.forEach((element) => {
+    if (element.classList.contains("classical")) {
+      classical.push(element);
+    } else {
+      notClassical.push(element);
+    }
+  });
+
   return [classical, notClassical];
 }
