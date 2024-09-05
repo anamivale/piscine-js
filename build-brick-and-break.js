@@ -25,10 +25,10 @@ export function repair(...ids) {
   ids.forEach((val) => {
     let el = document.getElementById(val);
     if (el.hasAttribute("foundation")) {
-      el.setAttribute("repaired", "in progress");
+      el.dataset.repaired = "in progress";
       el.textContent = "in progress";
     } else {
-      el.setAttribute("repaired", "true");
+      el.dataset.repaired = "true";
     }
   });
 }
