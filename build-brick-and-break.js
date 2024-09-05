@@ -1,8 +1,8 @@
 export function build(arg) {
-  let i = 0;
+  let i = 1;
 
   const intervalId = setInterval(() => {
-    if (i > arg - 1) {
+    if (i > arg) {
       clearInterval(intervalId);
     } else {
       const brick = document.createElement("div");
@@ -11,6 +11,7 @@ export function build(arg) {
         brick.setAttribute("foundation", "true");
       }
 
+      console.log(brick);
       const body = document.querySelector("body");
       body.append(brick);
       i++;
