@@ -5,8 +5,23 @@ export function getArchitects() {
 }
 
 export function getBonannoPisano() {
-  const BonannoPisano = document.getElementById("BonannoPisano");
-  const activeClassical = document.querySelectorAll(".classical:active");
+  let BonannoPisano;
+  const activeClassical = [];
+
+  const architects = document.querySelectorAll("a");
+  architects.forEach((element) => {
+    if (
+      element.classList.contains("classical") &&
+      element.classList.contains("active")
+    ) {
+      if (element.id === "BonannoPisano") {
+        BonannoPisano = element;
+      } else {
+        activeClassical.push(element);
+      }
+    }
+  });
+  console.log(activeClassical);
   return [BonannoPisano, activeClassical];
 }
 
