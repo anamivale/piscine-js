@@ -15,7 +15,7 @@ export function build(arg) {
       body.append(brick);
       i++;
     }
-  }, 1);
+  }, 100);
 }
 
 export function repair(...ids) {
