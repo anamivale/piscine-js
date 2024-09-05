@@ -7,11 +7,11 @@ export function build(arg) {
     } else {
       const brick = document.createElement("div");
       brick.id = "brick-" + i;
-      if ((i + 1) % 3 === 0) {
+      if (i % 3 === 2) {
         brick.setAttribute("foundation", "true");
+        console.log(brick);
       }
 
-      console.log(brick);
       const body = document.querySelector("body");
       body.append(brick);
       i++;
