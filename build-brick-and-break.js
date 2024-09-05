@@ -8,10 +8,10 @@ export function build(arg) {
       const brick = document.createElement("div");
       brick.id = "brick-" + i;
       if (i % 3 === 2) {
-        brick.setAttribute("foundation", true);
+        // brick.setAttribute("foundation", "true");
+        brick.dataset.foundation = "true";
         console.log(brick);
-        brick.textContent = "middle"
-        
+        brick.textContent = "middle";
       }
 
       const body = document.querySelector("body");
@@ -26,7 +26,7 @@ export function repair(...ids) {
     let el = document.getElementById(val);
     if (el.hasAttribute("foundation")) {
       el.setAttribute("repaired", "in progress");
-      el.textContent = "in progress"
+      el.textContent = "in progress";
     } else {
       el.setAttribute("repaired", "true");
     }
