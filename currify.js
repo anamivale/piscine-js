@@ -1,9 +1,7 @@
-function currify(fns) {
-    return function (...args) {
-      if (args.length > 1) {
-        args = [fns[0](...args)];
-      }
-      return fns.reduce((acc, fn) => fn(acc), args[0]);
-    };
-  }
-  
+function currify(fn) {
+  return function currified(...args) {
+    return args.length >= fn.length
+      ? fn(...args)
+      : currified.bind(null, ...args);
+  };
+}
