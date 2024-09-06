@@ -10,15 +10,15 @@ export function build(arg) {
       if (i % 3 === 2) {
         // brick.setAttribute("foundation", "true");
         brick.dataset.foundation = "true";
-        console.log(brick);
         brick.textContent = "middle";
+        brick.style.color = "red"
       }
 
       const body = document.querySelector("body");
       body.append(brick);
       i++;
     }
-  }, 100);
+  }, 1);
 }
 
 export function repair(...ids) {
