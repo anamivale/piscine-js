@@ -27,6 +27,7 @@ export function generateColdShades() {
     ) {
       const div = document.createElement("div");
       div.classList.add(element);
+      div.textContent = element;
       body.append(div);
     }
   });
