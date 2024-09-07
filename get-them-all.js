@@ -1,6 +1,7 @@
 export function getArchitects() {
   const architects = document.querySelectorAll("a");
   const nonArchitects = document.querySelectorAll("span");
+  const nonArchitect = document.querySelectorAll("body > :not(a)");
   return [architects, nonArchitects];
 }
 
@@ -21,7 +22,6 @@ export function getBonannoPisano() {
       }
     }
   });
-  console.log(activeClassical);
   return [BonannoPisano, activeClassical];
 }
 
@@ -39,7 +39,6 @@ export function getActive() {
       notActive.push(element);
     }
   });
-  console.log(active);
   return [active, notActive];
   //
 }

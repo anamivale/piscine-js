@@ -40,3 +40,4 @@ export function choseShade(params) {
     element.className = params;
   });
 }
+
