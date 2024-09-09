@@ -1,25 +1,26 @@
 function pick(obj, str) {
-    let keys = Object.keys(obj)
-    let output = {}
-    let pic = keys.filter((key)=> str.includes(key))
-    pic.forEach((element) => {
-        output[element] = obj[element]
-        
-    });
+  let keys = Object.keys(obj);
+  let output = {};
+  let pic = keys.filter((key) =>
+    typeof str === "string" ? key === str : str.includes(key)
+  );
+  pic.forEach((element) => {
+    output[element] = obj[element];
+  });
 
-    return output
-
+  return output;
 }
 
 function omit(obj, str) {
-    let keys = Object.keys(obj)
-    let output = {}
-    let pic = keys.filter((key)=> !str.includes(key))
-    pic.forEach((element) => {
-        output[element] = obj[element]
-        
-    });
-    return output
-
+  let keys = Object.keys(obj);
+  let output = {};
+  let pic = keys.filter((key) =>
+    typeof str === "string" ? key !== str : !str.includes(key)
+  );
+  pic.forEach((element) => {
+    output[element] = obj[element];
+  });
+  return output;
 }
+
 
