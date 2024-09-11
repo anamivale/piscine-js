@@ -1,10 +1,12 @@
 function filterEntries(obj, calbackfn) {
-    let entries = Object.entries(obj);
     let result = {};
   
    for (const [k,v] of Object.entries(obj)) {
-    let [newK, newV] = calbackfn([k,v])
-    result[newK] = newV
+    if(obj.hasOwnProperty(k)){
+      let [newK , newV ] = calbackfn([k,v])
+        result[newK] = newV;
+    }
+   
    }
     return result;
   }
