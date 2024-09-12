@@ -8,8 +8,8 @@ function deepCopy(params) {
   }
   if (params.constructor === Object) {
     let output = {};
-    for (const [key, value] in Object.entries(params)) {
-      output[key] = value;
+    for (const key in params) {
+        output[key] = params[key]
     }
     return output;
   }
