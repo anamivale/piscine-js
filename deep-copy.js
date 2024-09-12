@@ -1,3 +1,6 @@
 function deepCopy(params) {
-  console.log(params);
+  if (params.constructor === "Array") {
+    return [...params];
+  }
+  return params;
 }
