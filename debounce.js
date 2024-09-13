@@ -12,87 +12,25 @@ function debounce(func, wait) {
   };
 }
 
-function opDebounce(func, wait, options = {}) {
-  let timeout, lastCallTime, result, lastArgs, lastThis;
-  let { leading = true, trailing = false, maxWait } = options;
-
-  function invokeFunc() {
-    result = func.apply(lastThis, lastArgs);
-    lastArgs = lastThis = null; // Reset the context and arguments after execution
+function opDebounce(fn, delay, options) {
+  var timer = null,
+    first = true,
+    leading;
+  if (typeof options === "object") {
+    leading = !!options.leading;
   }
-
-  function shouldInvoke(time) {
-    const timeSinceLastCall = time - lastCallTime;
-    return (
-      lastCallTime === undefined ||
-      timeSinceLastCall >= wait ||
-      timeSinceLastCall < 0
-    );
-  }
-
-  function startTimer(pendingFunc, delay) {
-    timeout = setTimeout(pendingFunc, delay);
-  }
-
-  function trailingEdge(time) {
-    timeout = null; // No more pending calls
-
-    if (trailing && lastArgs) {
-      invokeFunc();
+  return function () {
+    let context = this,
+      args = arguments;
+    if (first && leading) {
+      fn.apply(context, args);
+      first = false;
     }
-  }
-
-  function leadingEdge(time) {
-    lastCallTime = time;
-    if (leading) {
-      invokeFunc();
+    if (timer) {
+      clearTimeout(timer);
     }
-
-    // Start the timer for the trailing edge.
-    startTimer(trailingEdge, wait);
-  }
-
-  function remainingWait(time) {
-    const timeSinceLastCall = time - lastCallTime;
-    const timeRemaining = wait - timeSinceLastCall;
-    return timeRemaining;
-  }
-
-  function maxingEdge(time) {
-    if (maxWait && shouldInvoke(time)) {
-      invokeFunc();
-    }
-    clearTimeout(timeout);
-  }
-
-  function debounced(...args) {
-    const now = Date.now();
-    const isInvoking = shouldInvoke(now);
-
-    lastArgs = args;
-    lastThis = this;
-    lastCallTime = now;
-
-    if (isInvoking) {
-      if (!timeout) {
-        leadingEdge(now);
-      }
-    } else if (!timeout) {
-      startTimer(trailingEdge, remainingWait(now));
-    }
-
-    if (maxWait) {
-      const timeSinceLastCall = now - lastCallTime;
-      if (timeSinceLastCall >= maxWait) {
-        maxingEdge(now);
-      }
-    }
-  }
-
-  debounced.cancel = function () {
-    clearTimeout(timeout);
-    lastCallTime = timeout = lastArgs = lastThis = null;
+    timer = setTimeout(function () {
+      fn.apply(context, args);
+    }, delay);
   };
-
-  return debounced;
 }
