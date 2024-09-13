@@ -2,11 +2,13 @@ function throttle(func, wait) {
   let timeout = true;
 
   return function (...args) {
+    if (timeout) {
+      return;
+    }
     func(...args);
 
-    timeout = false;
     setTimeout(() => {
-      func(...args);
+      timeout = false;
     }, wait);
   };
 }
