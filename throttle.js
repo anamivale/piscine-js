@@ -5,7 +5,7 @@ function throttle(func, wait) {
     if (timeoutArgs == null) {
       timeout = true;
     } else {
-      func(...args);
+      func(...timeoutArgs);
       timeoutArgs = null;
       setTimeout(timeoutFunc, wait);
     }
