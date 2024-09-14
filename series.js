@@ -1,11 +1,6 @@
 function series(args) {
-  let x = [];
-  if (args.length===0){
-    return x
-  }
-  args.forEach((element) => {
-    x.push(element());
-  });
-  return x
+  let output = args.map(async (element) => await element());
+  return Promise.all(output);
 }
 
+console.log(series([async () => 1, async () => true]));
