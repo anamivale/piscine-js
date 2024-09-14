@@ -4,4 +4,3 @@ function series(args) {
     x.push(element);
   });
 }
-fun;
