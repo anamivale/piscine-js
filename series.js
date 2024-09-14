@@ -4,7 +4,8 @@ function series(args) {
     return x
   }
   args.forEach((element) => {
-    x.push(element);
+    x.push(element());
   });
   return x
 }
+
