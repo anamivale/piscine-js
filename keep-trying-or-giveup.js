@@ -1,4 +1,3 @@
-// Retry Function
 function retry(count, callback) {
 	return async function (...args) {
 		let attempts = 0;
