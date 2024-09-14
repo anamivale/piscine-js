@@ -19,7 +19,7 @@ async function isWinner(country) {
     });
     year = year.slice(0, year.length - 2);
     resl = resl.slice(0, resl.length - 2);
-    return `${country} won the FIFA World Cup in <years>: "${year}" winning by <results>:"${resl}"`;
+    return `${country} won the FIFA World Cup in "${year}" winning by "${resl}"`;
   } else {
     return `${country} is not what we are looking for because of the number of times it was champion`;
   }
