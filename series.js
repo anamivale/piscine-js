@@ -1,7 +1,7 @@
-function series(...args) {
+function series(args) {
   let x = [];
   args.forEach((element) => {
     x.push(element);
   });
-  return x;
 }
+fun;
