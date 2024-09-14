@@ -1,8 +1,8 @@
-function series(args) {
-  let output = args.map(async (element) => await element());
-  return Promise.all(output);
+async function series(args) {
+  let results = [];
+  for (const fn of args) {
+    const result = await fn(); // Wait for each function to resolve
+    results.push(result); // Collect the result
+  }
+  return results;
 }
-
-series([async () => 1, async () => true]).then((result) => {
-  console.log(result); 
-});
