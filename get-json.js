@@ -1,5 +1,13 @@
 async function getJSON(path, params) {
-  let url = new URL(path);
+  console.log(path);
+  console.log(params);
+  let url = path;
+
+  try {
+    url = new URL(path);
+  } catch (error) {
+    return error;
+  }
   let param = URLSearchParams(url.search);
 
   param.append(params);
