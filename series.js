@@ -1,5 +1,5 @@
 function series(args) {
-  let output = args.map(async (element) => await element());
+  let output = args.map( (element) =>  element());
   return Promise.all(output);
 }
 
