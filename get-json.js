@@ -1,6 +1,4 @@
 async function getJSON(path, params) {
-  console.log(path);
-  console.log(params);
   let url = path;
 
   try {
@@ -8,6 +6,7 @@ async function getJSON(path, params) {
   } catch (error) {
     return error;
   }
+  console.log(param);
   let param = URLSearchParams(url.search);
 
   param.append(params);
@@ -24,3 +23,4 @@ async function getJSON(path, params) {
     console.error(error.message);
   }
 }
+console.log(getJSON("/test", { query: "hello world", b: 5 }));
