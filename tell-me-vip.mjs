@@ -35,7 +35,9 @@ try {
     if (err) {
       console.log("error>", err.message);
     }
-
+    if (typeof data === "undefined") {
+      return;
+    }
     let dat = data.toString();
     let arrData = dat.split(".json");
     let lastFirst = [];
