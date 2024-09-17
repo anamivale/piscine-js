@@ -1,4 +1,4 @@
-import { writeFile } from 'node:fs/promises';
+import fs from "fs";
 import { argv } from "node:process";
 // print process.argv
 let newArray = [];
@@ -10,4 +10,9 @@ x.forEach((val) => {
         val.slice(val.length / 2 + 1) + val.slice(0, val.length / 2 + 1)
       );
 });
-console.log(newArray.join(" "));
+let output = newArray.join(" ");
+fs.writeFile("verydisco-forever.txt", output, (err)=>{
+    if(err){
+        console.log(err.message);
+    }
+});
