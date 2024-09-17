@@ -43,6 +43,10 @@ try {
     }
 
     lastFirst.sort();
+    if (!Array.isArray(lastFirst)) {
+      console.log("");
+      return;
+    }
     for (let i = 0; i < lastFirst.length - 1; i++) {
       if (lastFirst[i] === "undefined") {
         continue;
