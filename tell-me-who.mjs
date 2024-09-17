@@ -18,7 +18,7 @@ try {
     }
     lastFirst.sort();
     lastFirst.forEach((element, idx) => {
-      console.log(idx + 1, element);
+      console.log(`${idx + 1}. ${element}`);
     });
   });
 } catch (err) {
