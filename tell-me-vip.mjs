@@ -1,68 +1,38 @@
-import fs from "fs";
+import fs from "fs/promises";
+import path from "path";
 
-let path = "/home/vmuhembe/piscine-js/guests";
-
-try {
-  fs.readdir(path, (err, files) => {
-    if (err) {
-      console.log("error>", err.message);
-    }
-    if (!Array.isArray(files)) {
-      console.log("");
-      return;
-    }
-    files.forEach((element) => {
-      fs.readFile(path + "/" + element, (err, data) => {
-        if (err) {
-          console.log("error>", err.message);
-        }
-        let obj = JSON.parse(data);
-        if (obj.answer === "yes") {
-          fs.appendFile("vip.txt", element, (err) => {
-            if (err) {
-              console.log(err);
-            }
-          });
-        }
-      });
-    });
-  });
-} catch (error) {
-  console.log(error.message);
+let arg = process.argv[2];
+if (arg === undefined) {
+  arg = process.argv[1];
 }
-try {
-  const fileExists = fs.existsSync("vip.txt");
-  if (!fileExists) {
-    return;
-  }
-  fs.readFile("vip.txt", (err, data) => {
-    if (err) {
-      console.log("error>", err.message);
-    }
-    if (typeof data === "undefined") {
-      return;
-    }
-    let dat = data.toString();
-    let arrData = dat.split(".json");
-    let lastFirst = [];
-    for (let file of arrData) {
-      let x = file.split("_");
-      let lf = x[1] + " " + x[0];
-      lastFirst.push(lf);
-    }
 
-    lastFirst.sort();
-    if (!Array.isArray(lastFirst)) {
-      console.log("");
-      return;
+try {
+  const data = await fs.readdir(arg, "utf8");
+  let arr = [];
+  for (let i = 0; i < data.length; i++) {
+    if (await saidYes(path.join(arg, data[i]))) {
+      let s = data[i].replace(/\.json$/, "");
+      let [lastName, firstName] = s.split("_");
+      arr.push(`${firstName} ${lastName}`);
     }
-    for (let i = 0; i < lastFirst.length - 1; i++) {
-      if (lastFirst[i] === "undefined") {
-        continue;
-      }
-      console.log(`${i + 1}. ${lastFirst[i]}`);
-    }
-  });
-} catch (error) {
-  console.log(error.message);
+  }
+  arr.sort();
+
+  let s = arr.map((name, index) => `${index + 1}. ${name}`).join("\n");
+
+  await fs.writeFile("vip.txt", s);
+  console.log(s); // Print the result to console
+} catch (err) {
+  console.error("Error:", err);
+}
+
+async function saidYes(filename) {
+  try {
+    const data = await fs.readFile(filename, "utf8");
+    const jsonData = JSON.parse(data);
+    return jsonData.answer === "yes";
+  } catch (err) {
+    console.error("Error reading/parsing file:", filename, err);
+    return false;
+  }
 }
