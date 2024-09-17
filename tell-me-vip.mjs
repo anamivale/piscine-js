@@ -31,6 +31,10 @@ try {
   console.log(error.message);
 }
 try {
+  const fileExists = fs.existsSync("vip.txt");
+  if (!fileExists) {
+    return;
+  }
   fs.readFile("vip.txt", (err, data) => {
     if (err) {
       console.log("error>", err.message);
