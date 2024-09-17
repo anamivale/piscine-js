@@ -7,7 +7,10 @@ try {
     if (err) {
       console.log("error>", err.message);
     }
-
+    if (!Array.isArray(files)) {
+      console.log("");
+      return;
+    }
     files.forEach((element) => {
       fs.readFile(path + "/" + element, (err, data) => {
         if (err) {
