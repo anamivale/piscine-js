@@ -1,5 +1,3 @@
-// gatecrashers.mjs
-
 import http from "http";
 import fs from "fs/promises";
 import path from "path";
@@ -10,7 +8,6 @@ const password = "abracadabra";
 
 // Use the environment variable GUESTS_DIR or default to 'guests'
 const guestsDir = process.env.GUESTS_DIR || path.join(process.cwd(), "guests");
-// console.log(`Using guests directory: ${guestsDir}`); // Debugging log
 
 const server = http.createServer(async (req, res) => {
   try {
@@ -72,32 +69,27 @@ const server = http.createServer(async (req, res) => {
         try {
           await fs.access(guestsDir);
         } catch (err) {
-          // console.log(`Directory ${guestsDir} does not exist. Creating it...`); // Debugging log
           await fs.mkdir(guestsDir, { recursive: true });
         }
 
         // Write the data to the file as JSON
         const filePath = path.join(guestsDir, `${guestName}.json`);
         await fs.writeFile(filePath, JSON.stringify(data, null, 2), "utf-8");
-        // console.log(`File created at: ${filePath}`); // Debugging log
 
         // Respond with the same data that was sent in the request
         res.writeHead(200, { "Content-Type": "application/json" });
         res.end(JSON.stringify(data));
       } catch (err) {
-        // console.log("Error writing file:", err); // Debugging log
         res.writeHead(500, { "Content-Type": "application/json" });
         res.end(JSON.stringify({ error: "server failed" }));
       }
     });
 
     req.on("error", (err) => {
-      // console.log("Request error:", err); // Debugging log
       res.writeHead(500, { "Content-Type": "application/json" });
       res.end(JSON.stringify({ error: "server failed" }));
     });
   } catch (err) {
-    // console.log("General server error:", err); // Debugging log
     res.writeHead(500, { "Content-Type": "application/json" });
     res.end(JSON.stringify({ error: "server failed" }));
   }
