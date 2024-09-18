@@ -23,7 +23,7 @@ const server = http.createServer(async (req, res) => {
     if (!authHeader || !validateAuth(authHeader)) {
       res.writeHead(401, {
         "Content-Type": "application/json",
-        "WWW-Authenticate": "Basic",
+        "WWW-Authenticate": "Basic realm=\"Access to the staging site\"",
       });
       res.end(JSON.stringify({ error: "Authorization Required" }));
       return;
