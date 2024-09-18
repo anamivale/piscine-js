@@ -1,80 +1,60 @@
 import http from "http";
-import fs from "fs/promises";
-import path from "path";
+import { readFile, writeFile } from "fs/promises";
+import { Buffer } from "node:buffer";
 
-const PORT = 5000;
-const allowedUsers = ["Caleb_Squires", "Tyrique_Dalton", "Rahima_Young"];
-const password = "abracadabra";
+const serverHost = "localhost";
+const serverPort = 5000;
+const guestsDirectory = `guests`;
+const authorizedUsers = ["Caleb_Squires", "Tyrique_Dalton", "Rahima_Young"];
 
-// Use the environment variable GUESTS_DIR, or default to 'guests' in the current working directory
-const guestsDir = process.env.GUESTS_DIR || path.join(process.cwd(), "guests");
+const handleGuestData = (request, response) => {
+	let responseStatusCode = 200;
+	response.setHeader("Content-Type", "application/json");
+	const guestFileName = `${request.url.slice(1)}.json`;
 
-const server = http.createServer(async (req, res) => {
-  if (req.method !== "POST") {
-    res.writeHead(404, { "Content-Type": "application/json" });
-    res.end(JSON.stringify({ error: "not found" }));
-    return;
-  }
+	const sendErrorResponse = (error, statusCode, message) => {
+		const errorResponseBody = JSON.stringify({ error: message });
 
-  const authHeader = req.headers.authorization;
-  if (!authHeader || !validateAuth(authHeader)) {
-    res.writeHead(401, {
-      "Content-Type": "application/json",
-      "WWW-Authenticate": 'Basic realm="Access to gatecrashers"',
-    });
-    res.end("Authorization Required");
-    return;
-  }
+		response
+			.writeHead(statusCode, {
+				"Content-Length": Buffer.byteLength(errorResponseBody),
+			})
+			.end(errorResponseBody);
+	};
 
-  const guestName = decodeURIComponent(req.url.slice(1));
-  if (!guestName) {
-    res.writeHead(400, { "Content-Type": "application/json" });
-    res.end(JSON.stringify({ error: "bad request" }));
-    return;
-  }
+	const authorizationHeader = request.headers["authorization"];
+	if (!authorizationHeader) {
+		sendErrorResponse("no credentials found", 401, "no credentials found");
+		return;
+	}
 
-  let body = "";
-  req.on("data", (chunk) => {
-    body += chunk.toString();
-  });
+	const credentials = Buffer.from(authorizationHeader.slice(6), "base64")
+		.toString()
+		.split(":");
 
-  req.on("end", async () => {
-    try {
-      const contentType = req.headers["content-type"] || "";
-      if (!contentType.includes("application/json") || !body) {
-        res.writeHead(400, { "Content-Type": "application/json" });
-        res.end(JSON.stringify({ error: "bad request" }));
-        return;
-      }
+	if (
+		!authorizedUsers.includes(credentials[0]) ||
+		credentials[1] !== "abracadabra"
+	) {
+		sendErrorResponse("wrong credentials", 401, "Authorization Required%");
+		return;
+	}
 
-      const data = JSON.parse(body);
+	let requestBody = request.headers["body"];
 
-      // Ensure the directory exists
-      await fs.mkdir(guestsDir, { recursive: true });
+	writeFile(`${guestsDirectory}/${guestFileName}`, requestBody)
+		.then(() => {
+			const successResponseBody = requestBody;
+			response
+				.writeHead(responseStatusCode, {
+					"Content-Length": Buffer.byteLength(successResponseBody),
+				})
+				.end(successResponseBody);
+		})
+		.catch((error) => sendErrorResponse(error, 500, "Failed to write file"));
+};
 
-      const filePath = path.join(guestsDir, `${guestName}.json`);
-      await fs.writeFile(filePath, JSON.stringify(data, null, 2));
-
-      res.writeHead(200, { "Content-Type": "application/json" });
-      res.end(JSON.stringify(data));
-    } catch (err) {
-      console.error("Error:", err);
-      res.writeHead(500, { "Content-Type": "application/json" });
-      res.end(JSON.stringify({ error: "server failed" }));
-    }
-  });
-});
-
-function validateAuth(authHeader) {
-  const [method, encoded] = authHeader.split(" ");
-  if (method !== "Basic") return false;
-
-  const decoded = Buffer.from(encoded, "base64").toString("utf-8");
-  const [username, pass] = decoded.split(":");
-
-  return allowedUsers.includes(username) && pass === password;
-}
-
-server.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
+const httpServer = http.createServer(handleGuestData);
+httpServer.listen(serverPort, serverHost, () => {
+	console.log(`Server is running on http://${serverHost}:${serverPort}`);
 });
