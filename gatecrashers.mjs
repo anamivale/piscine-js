@@ -6,7 +6,7 @@ const PORT = 5000;
 const allowedUsers = ["Caleb_Squires", "Tyrique_Dalton", "Rahima_Young"];
 const password = "abracadabra";
 
-// Use the environment variable GUESTS_DIR or default to 'guests'
+// Use the environment variable GUESTS_DIR or default to 'guests' in the current working directory
 const guestsDir = process.env.GUESTS_DIR || path.join(process.cwd(), "guests");
 
 const server = http.createServer(async (req, res) => {
@@ -23,7 +23,7 @@ const server = http.createServer(async (req, res) => {
     if (!authHeader || !validateAuth(authHeader)) {
       res.writeHead(401, {
         "Content-Type": "application/json",
-        "WWW-Authenticate": "Basic realm=\"Access to the staging site\"",
+        "WWW-Authenticate": 'Basic realm="Access to the staging site"',
       });
       res.end(JSON.stringify({ error: "Authorization Required" }));
       return;
@@ -66,11 +66,7 @@ const server = http.createServer(async (req, res) => {
         }
 
         // Ensure the 'guests' directory exists
-        try {
-          await fs.access(guestsDir);
-        } catch (err) {
-          await fs.mkdir(guestsDir, { recursive: true });
-        }
+        await fs.mkdir(guestsDir, { recursive: true });
 
         // Write the data to the file as JSON
         const filePath = path.join(guestsDir, `${guestName}.json`);
@@ -80,16 +76,19 @@ const server = http.createServer(async (req, res) => {
         res.writeHead(200, { "Content-Type": "application/json" });
         res.end(JSON.stringify(data));
       } catch (err) {
+        console.error("Error:", err);
         res.writeHead(500, { "Content-Type": "application/json" });
         res.end(JSON.stringify({ error: "server failed" }));
       }
     });
 
     req.on("error", (err) => {
+      console.error("Request error:", err);
       res.writeHead(500, { "Content-Type": "application/json" });
       res.end(JSON.stringify({ error: "server failed" }));
     });
   } catch (err) {
+    console.error("General server error:", err);
     res.writeHead(500, { "Content-Type": "application/json" });
     res.end(JSON.stringify({ error: "server failed" }));
   }
@@ -97,6 +96,7 @@ const server = http.createServer(async (req, res) => {
 
 server.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
+  console.log(`Using guests directory: ${guestsDir}`);
 });
 
 function validateAuth(authHeader) {
